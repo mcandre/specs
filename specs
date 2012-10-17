@@ -33,7 +33,13 @@ require "rdoc/usage"
 
 SPECS_VERSION = "0.1"
 
-# Get the operating system reliably, even in JRuby
+# Get the basic operating system name reliably, even in JRuby
+# Useful for OS-contextual command line instructions.
+#
+# E.g., "C:\Program Files (x86)\Mozilla Firefox\firefox --version" in Windows vs
+#       "/Applications/Firefox.app/Contents/MacOS/firefox --version" in Mac vs
+#       "firefox --version" in Unix
+#
 module Os
 	def Os.raw
 		Config::CONFIG["host_os"]
