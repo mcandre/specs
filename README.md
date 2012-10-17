@@ -41,10 +41,10 @@ Many programs can generate reports on their system specifications with a command
 
 Sometimes getting basic information requires tricky shell syntax. Apple's older version of `as` plays dumb when asked for its version number; it will report the information, but then it will hang forever, expecting assembly code for input. Any user or program attempting to get `as` version info will stall, waiting for `as` to quit. This is canceled by sending the End of File signal through `< /dev/null`.
 
+Sometimes, programs generate too much information. `grep` can filter the lengthy output of `system_profiler SPSoftwareDataType`, displaying only the relevant data. `grep` is available in most Unix environments by default, including Mac OS X. For Windows, grep is available as a [third party app](http://www.yellosoft.us/helpers#grep).
+
 	$ system_profiler SPSoftwareDataType | grep 'System Version'
 	      System Version: OS X 10.8.2 (12C54)
-
-In this case, the `grep` command is filtering the lengthy output of `system_profiler SPSoftwareDataType`, displaying only the relevant data. is available in most Unix environments by default, including Mac OS X. grep is available for Windows as a [third party app](http://www.yellosoft.us/helpers#grep).
 
 # BUILTINS
 
