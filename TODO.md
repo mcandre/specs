@@ -1,6 +1,5 @@
 # Browsers
 
-* Chrome
 * Opera
 * Safari
 * IE

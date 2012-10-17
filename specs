@@ -59,7 +59,7 @@ module Os
 	end
 
 	def Os.linux?
-		Os.unix? and not Os.mac?
+		Os.unix? and not Os.mac? and not Os.haiku?
 	end
 
 	def Os.haiku?
@@ -124,18 +124,22 @@ end
 
 # Print a command line instruction and its output,
 # Emulating a user manually entering the instruction.
-def run(cmd)
+def run(cmd, spec)
 	# Newline to visually separate multiple spec commands.
 	puts ""
 
-	puts cmd
-
-	output = `#{cmd} 2>&1`
-
-	if output.include?(Os.command_not_found)
-		puts "#{cmd.split.first} appears unavailable"
+	if cmd.nil?
+		puts "#{spec} spec not implemented for this system"
 	else
-		puts output
+		puts cmd
+
+		output = `#{cmd} 2>&1`
+
+		if output.include?(Os.command_not_found)
+			puts "#{cmd.split.first} not found"
+		else
+			puts output
+		end
 	end
 end
 
@@ -181,12 +185,11 @@ def main
 		# in order to retrieve the spec information?
 		cmds = command(spec)
 
-		# Module returns a single command string.
-		if cmds.instance_of?(String)
-			run(cmds)
-		# Assume module returns an array of command strings.
-		else
-			cmds.each { |cmd| run(cmd) }
+		if cmds.nil? or cmds.instance_of?(String)
+			run(cmds, spec)
+		# Module returns an array of command strings.
+		elsif cmds.instance_of?(Array)
+			cmds.each { |cmd| run(cmd, spec) }
 		end
 	}
 end
