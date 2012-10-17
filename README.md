@@ -24,7 +24,7 @@
 
 By default, specs can obtain information for several aspects:
 
-* Ruby version
+* Ruby and RubyGems versions
 * Operating System name and version
 * Hardware manufacturer and model name
 
