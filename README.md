@@ -1,4 +1,4 @@
-# specs - Get system specs easily
+# specs - Software version information at your fingertips
 
 # EXAMPLE
 
