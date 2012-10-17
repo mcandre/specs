@@ -2,7 +2,7 @@
 
 # EXAMPLE
 
-Bug tracking is much easier when everyone is on the same page for which versions of software are being used. `specs` brings this information right to your fingertips. List the names of the specs to report, and `specs` will do its best to retrieve them.
+Bug tracking is much easier when everyone is on the same page for which versions of software are being used. `specs` brings this information right to your fingertips. List the names of the aspects to report, and `specs` will do its best to retrieve them.
 
 	$ specs ruby os hardware
 	Specs:
@@ -21,13 +21,13 @@ The `spec` user can copy & paste this output into bug trackers, forums, mailing 
 
 # BUILTINS
 
-By default, specs can obtain information for several aspects:
+By default, `specs` can obtain information for several aspects:
 
 * Ruby and RubyGems versions
 * Operating System name and version
 * Hardware manufacturer and model name
 
-If other systems are available, specs can obtain version information for them as well.
+If other systems are available, `specs` can obtain version information for them as well.
 
 * Any program with a `--version` flag
 * as
@@ -105,4 +105,4 @@ All of these tricks are combined together preemtively in `specs` Ruby recipes, s
 
 # ADDONS
 
-Additional specs are inserted as Ruby modules in the `commands` subdirectory. The addons therein serve as a template for further addons.
+Additional `specs` Ruby recipes are loaded from the `commands` subdirectory. The addons therein can serve as a template for custom aspects.
