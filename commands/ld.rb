@@ -1,5 +1,5 @@
 module Ld
-    def Ld.command
-        "ld -v"
-    end
+	def Ld.command
+		"ld -v"
+	end
 end

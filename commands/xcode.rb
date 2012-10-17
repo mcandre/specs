@@ -1,7 +1,7 @@
 module Xcode
-    def Xcode.command
-        if Os.mac?
-            "xcodebuild -version"
-        end
-    end
+	def Xcode.command
+		if Os.mac?
+			"xcodebuild -version"
+		end
+	end
 end

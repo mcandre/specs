@@ -1,5 +1,5 @@
 module Lua
-    def Lua.command
-        "lua -v"
-    end
+	def Lua.command
+		"lua -v"
+	end
 end
