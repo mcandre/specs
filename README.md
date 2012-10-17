@@ -103,6 +103,11 @@ Audio:
 
 All of these tricks are combined together preemtively in `specs` Ruby recipes, so that you don't have to bother looking through `man` pages for version info.
 
+# INSTALLATION
+
+1. Copy the specs root folder to a local directory such.
+2. Add the specs directory to path.
+
 # ADDONS
 
 Additional `specs` Ruby recipes are loaded from the `commands` subdirectory. The addons therein can serve as a template for custom aspects.

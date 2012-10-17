@@ -34,6 +34,8 @@ require "rdoc/usage"
 SPECS_VERSION = "0.1"
 SPECS_VERSION_STRING = "specs #{SPECS_VERSION}"
 
+SPECS_DIR = Pathname.new(File.dirname(__FILE__))
+
 # Get the basic operating system name reliably, even in JRuby
 # Useful for OS-contextual command line instructions.
 #
@@ -115,7 +117,7 @@ def command(aspect)
 		mod = Kernel.const_get(mod_name)
 		mod.command
 	elsif !BUILTINS.include?(aspect)
-		require_path = "commands/#{aspect}"
+		require_path = [SPECS_DIR, "commands", aspect].join(File::SEPARATOR)
 
 		# For nonstandard aspects,
 		# 1. Check that a Ruby module exists in the commands subdirectory.
