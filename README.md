@@ -17,7 +17,7 @@ Bug tracking is much easier when everyone is on the same page for which versions
 	system_profiler | grep 'Model Identifier'
 	      Model Identifier: MacBookPro5,5
 
-The `spec` user can copy & paste this output bug trackers, forums, mailing lists, and live chat sessions. On the other end of the line, people can quickly see which versions of the relevant software toolchain are installed. Finally, `spec` output prints the commands for obtaining this information, so that anyone, even non-`spec` users can obtain the same information quickly and easily via the command line.
+The `spec` user can copy & paste this output into bug trackers, forums, mailing lists, and live chat sessions. On the other end of the line, people can quickly see which versions of the relevant software toolchain are installed. Finally, `spec` output prints the commands for obtaining this information, so that anyone, even non-`spec` users can obtain the same information quickly and easily via the command line.
 
 # REQUIREMENTS
 
