@@ -2,6 +2,8 @@
 
 # EXAMPLE
 
+`specs` brings system information right to your fingertips. List the names of the specs to report, and `specs` will do its best to retrieve them.
+
 	$ specs ruby os hardware
 	Specs:
 
@@ -19,6 +21,28 @@
 
 * [Ruby](http://www.ruby-lang.org/)
 * [extlib](http://rubygems.org/gems/extlib)
+
+# OVERVIEW
+
+Many programs can generate reports on their system specifications. As you can see, many programs do not standardize their command line interface, so they often require different options to provide the same data. `ruby` requires a `--version` flag, but `ld` requires a `-v` flag, and `as` requires a `-version` flag.
+
+	$ ruby --version
+	ruby 1.8.7 (2012-02-08 patchlevel 358) [universal-darwin12.0]
+
+	$ ld -v
+	@(#)PROGRAM:ld  PROJECT:ld64-134.9
+	configured to support archs: armv6 armv7 armv7s i386 x86_64
+	LTO support using: LLVM version 3.1svn, from Apple Clang 4.1 (build 421.11.65)
+
+	# as -o /dev/null -version < /dev/null
+	Apple Inc version cctools-836, GNU assembler version 1.38
+
+Sometimes getting basic information requires some command line tricks. Apple's older version of `as` plays dumb when asked for its version number; it will report the information, but then it will hang forever, expecting assembly code as input. This is canceled by sending the End of File signal through `< /dev/null`.
+
+	$ system_profiler SPSoftwareDataType | grep 'System Version'
+	      System Version: OS X 10.8.2 (12C54)
+
+In this case, the `grep` command is filtering the lengthy output of `system_profiler SPSoftwareDataType`, displaying only the relevant data. is available in most Unix environments by default, including Mac OS X. grep is available for Windows as a [third party app](http://www.yellosoft.us/helpers#grep).
 
 # BUILTINS
 

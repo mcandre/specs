@@ -1,7 +1,7 @@
 module Perl
 	def Perl.command
 		[
-			"ppm --version 2>&1", # Redirect stderr to stdout
+			"ppm --version",
 			"cpan --version",
 			"perl --version"
 		]

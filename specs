@@ -80,7 +80,7 @@ module Os
 		if Os.windows?
 			"ver"
 		elsif Os.mac?
-			"system_profiler SPSoftwareDataType | grep System"
+			"system_profiler SPSoftwareDataType | grep 'System Version'"
 		else
 			"uname -a"
 		end
@@ -125,17 +125,18 @@ end
 # Print a command line instruction and its output,
 # Emulating a user manually entering the instruction.
 def run(cmd)
-	puts cmd
-
-	output = `#{cmd}`
-
-	# Omit programs not currently installed.
-	if !output.include?(Os.command_not_found)
-		puts output
-	end
-
 	# Newline to visually separate multiple spec commands.
 	puts ""
+
+	puts cmd
+
+	output = `#{cmd} 2>&1`
+
+	if output.include?(Os.command_not_found)
+		puts "#{cmd.split.first} appears unavailable"
+	else
+		puts output
+	end
 end
 
 def usage
@@ -173,7 +174,7 @@ def main
 		specs = ARGV
 	end
 
-	puts "Specs:\n\n"
+	puts "Specs:\n"
 
 	specs.each { |spec|
 		# What does the spec module say to run
