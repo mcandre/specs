@@ -27,17 +27,21 @@ By default, specs can obtain information for several aspects:
 * Operating System name and version
 * Hardware manufacturer and model name
 
-If other tools are installed, specs can obtain version information for them as well.
+If other systems are available, specs can obtain version information for them as well.
 
 * Any program with a `--version` flag
 * as
+* Chrome
+* Firefox
 * gcc
 * g++
 * ld
 * Lua
 * Haskell Platform and consituents (GHC, Cabal)
 * Inkscape
+* OS name and version (Mac, Windows, Linux, Haiku, Unix, ...)
 * Perl
+* Ruby
 * Xcode
 ...
 
