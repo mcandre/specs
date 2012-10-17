@@ -2,7 +2,7 @@
 
 # EXAMPLE
 
-Bug tracking is much easier when everyone is on the same page for which versions of software are being used. `specs` brings this information right to your fingertips. List the names of the specs to report, and `specs` will do its best to retrieve them. `specs` will also print the commands it uses to obtain the data, making it easy for other people to retrieve their version information and compare with yours.
+Bug tracking is much easier when everyone is on the same page for which versions of software are being used. `specs` brings this information right to your fingertips. List the names of the specs to report, and `specs` will do its best to retrieve them.
 
 	$ specs ruby os hardware
 	Specs:
@@ -17,7 +17,7 @@ Bug tracking is much easier when everyone is on the same page for which versions
 	system_profiler | grep 'Model Identifier'
 	      Model Identifier: MacBookPro5,5
 
-The `spec` user can copy & paste this output into bug trackers, forums, mailing lists, and live chat sessions. On the other end of the line, people can quickly see which versions of the relevant software toolchain are installed. Finally, `spec` output prints the commands for obtaining this information, so that anyone, even non-`spec` users can obtain the same information quickly and easily via the command line.
+The `spec` user can copy & paste this output into bug trackers, forums, mailing lists, and live chat sessions. On the other end of the line, people can quickly see which versions of the relevant software toolchain are installed. The output includes the commands that were used to obtain this information, so that anyone, even non-`spec` users, can obtain the same information quickly and easily.
 
 # REQUIREMENTS
 
