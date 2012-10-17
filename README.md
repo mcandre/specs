@@ -28,15 +28,15 @@ The `spec` user can copy & paste this output into bug trackers, forums, mailing 
 
 Many programs can generate reports on their system specifications with a command line flag such as `--version`. However, command line options are not standardize across different programs, making it difficult to know for an arbitrary program how to obtain its version info.
 
-	$ ruby --version
+	ruby --version
 	ruby 1.8.7 (2012-02-08 patchlevel 358) [universal-darwin12.0]
 
-	$ ld -v
+	ld -v
 	@(#)PROGRAM:ld  PROJECT:ld64-134.9
 	configured to support archs: armv6 armv7 armv7s i386 x86_64
 	LTO support using: LLVM version 3.1svn, from Apple Clang 4.1 (build 421.11.65)
 
-	# as -o /dev/null -version < /dev/null
+	as -o /dev/null -version < /dev/null
 	Apple Inc version cctools-836, GNU assembler version 1.38
 
 Sometimes getting basic information requires some command line tricks. Apple's older version of `as` plays dumb when asked for its version number; it will report the information, but then it will hang forever, expecting assembly code as input. This is canceled by sending the End of File signal through `< /dev/null`.
