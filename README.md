@@ -28,13 +28,14 @@ By default, specs can obtain information for:
 * Operating System name and version
 * Hardware manufacturer and model name
 
-If other tools are installed, specs can obtain information for them as well.
+If other tools are installed, specs can obtain version information for them as well.
 
-* as version
-* gcc version
-* g++ version
-* ld version
-* Haskell Platform and consituent version
+* as
+* gcc
+* g++
+* ld
+* Lua
+* Haskell Platform and consituents (GHC, Cabal)
 * Inkscape version
 * Xcode version
 ...
