@@ -28,11 +28,13 @@ By default, specs can obtain information for:
 * Operating System name and version
 * Hardware manufacturer and model name
 
-If binutils are installed, specs can also obtain information for:
+If development are installed, specs can obtain information for them as well.
 
+* as version
 * ld version
-* gcc
-* 
+* gcc version
+* Xcode version
+* Haskell Platform and consituent version
 
 # ADDONS
 
