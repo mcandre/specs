@@ -30,6 +30,7 @@ By default, specs can obtain information for:
 
 If other tools are installed, specs can obtain version information for them as well.
 
+* Any program with a `--version` flag
 * as
 * gcc
 * g++
@@ -43,6 +44,4 @@ If other tools are installed, specs can obtain version information for them as w
 
 # ADDONS
 
-Additional specs are inserted as Ruby modules in the `commands` subdirectory.
-
-View this directory for example spec modules.
+Additional specs are inserted as Ruby modules in the `commands` subdirectory. The addons therein serve as a template for further addons.
