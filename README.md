@@ -22,7 +22,7 @@
 
 # BUILTINS
 
-By default, specs can obtain information for:
+By default, specs can obtain information for several aspects:
 
 * Ruby version
 * Operating System name and version

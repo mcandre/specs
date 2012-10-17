@@ -18,6 +18,8 @@
 #
 # By default, aspects are os and hardware.
 #
+# If an aspect is not installed, its output may be omitted.
+#
 # --help, -h:
 #    show usage info for specs
 #
@@ -127,9 +129,8 @@ def run(cmd)
 
 	output = `#{cmd}`
 
-#	if output.include?(Os.command_not_found)
-		puts Os.command_not_found
-	else
+	# Omit programs not currently installed.
+	if !output.include?(Os.command_not_found)
 		puts output
 	end
 
