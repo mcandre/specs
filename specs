@@ -100,7 +100,6 @@ def command(spec)
         # 4. Access module.command.
         if File.exist?("#{require_path}.rb")
             require require_path
-
             mod_name = spec.camel_case
             mod = Kernel.const_get(mod_name)
             mod.command
@@ -161,6 +160,8 @@ def main
     puts "Specs:\n\n"
 
     specs.each { |spec|
+        # What does the spec module say to run
+        # in order to retrieve the spec information?
         cmds = command(spec)
 
         # Module returns a single command string.
