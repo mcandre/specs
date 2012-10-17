@@ -22,7 +22,7 @@ Bug tracking is much easier when everyone is on the same page for which versions
 	system_profiler | grep 'Model Identifier'
 	      Model Identifier: MacBookPro5,5
 
-You can copy & paste the output into bug trackers, forums, mailing lists, and live chat sessions. `spec` prints the command line instructions that obtain the version information, so that anyone, even non-`spec` users, can obtain the same information quickly and easily.
+You can copy & paste the output into bug trackers, forums, mailing lists, and live chat sessions. `specs` prints the command line instructions that obtain the version information, so that anyone, even non-`specs` users, can obtain the same information quickly and easily.
 
 # REQUIREMENTS
 
@@ -33,4 +33,4 @@ You can copy & paste the output into bug trackers, forums, mailing lists, and li
 
 Custom aspects are written as Ruby recipes in the `commands` subdirectory. Any recipes you create there are automatically part of your local aspect database.
 
-When you're happy with your recipes, issue a [git pull request](https://github.com/mcandre/specs/pull/new/master) to share them with other `spec` users.
+When you're happy with your recipes, issue a [git pull request](https://github.com/mcandre/specs/pull/new/master) to share them with other `specs` users.
