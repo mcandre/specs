@@ -26,7 +26,7 @@ The `spec` user can copy & paste this output into bug trackers, forums, mailing 
 
 # OVERVIEW
 
-Many programs can generate reports on their system specifications. As you can see, many programs do not standardize their command line interface, so they often require different options to provide the same data. `ruby` requires a `--version` flag, but `ld` requires a `-v` flag, and `as` requires a `-version` flag.
+Many programs can generate reports on their system specifications with a command line flag such as `--version`. However, command line options are not standardize across different programs, making it difficult to know for an arbitrary program how to obtain its version info.
 
 	$ ruby --version
 	ruby 1.8.7 (2012-02-08 patchlevel 358) [universal-darwin12.0]
