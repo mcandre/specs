@@ -19,6 +19,28 @@ Bug tracking is much easier when everyone is on the same page for which versions
 
 The `spec` user can copy & paste this output into bug trackers, forums, mailing lists, and live chat sessions. On the other end of the line, people can quickly see which versions of the relevant software toolchain are installed. The output includes the commands that were used to obtain this information, so that anyone, even non-`spec` users, can obtain the same information quickly and easily.
 
+# BUILTINS
+
+By default, specs can obtain information for several aspects:
+
+* Ruby and RubyGems versions
+* Operating System name and version
+* Hardware manufacturer and model name
+
+If other tools are installed, specs can obtain version information for them as well.
+
+* Any program with a `--version` flag
+* as
+* gcc
+* g++
+* ld
+* Lua
+* Haskell Platform and consituents (GHC, Cabal)
+* Inkscape
+* Perl
+* Xcode
+...
+
 # REQUIREMENTS
 
 * [Ruby](http://www.ruby-lang.org/)
@@ -75,28 +97,6 @@ Audio:
 	      System Version: OS X 10.8.2 (12C54)
 
 All of these tricks are combined together preemtively in `specs` Ruby recipes, so that you don't have to bother looking through `man` pages for version info.
-
-# BUILTINS
-
-By default, specs can obtain information for several aspects:
-
-* Ruby and RubyGems versions
-* Operating System name and version
-* Hardware manufacturer and model name
-
-If other tools are installed, specs can obtain version information for them as well.
-
-* Any program with a `--version` flag
-* as
-* gcc
-* g++
-* ld
-* Lua
-* Haskell Platform and consituents (GHC, Cabal)
-* Inkscape
-* Perl
-* Xcode
-...
 
 # ADDONS
 

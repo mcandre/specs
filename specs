@@ -32,6 +32,7 @@ require "getoptlong"
 require "rdoc/usage"
 
 SPECS_VERSION = "0.1"
+SPECS_VERSION_STRING = "specs #{SPECS_VERSION}"
 
 # Get the basic operating system name reliably, even in JRuby
 # Useful for OS-contextual command line instructions.
@@ -93,49 +94,60 @@ module Os
 	end
 end
 
-BUILTINS = ["os"]
+module Specs
+	def Specs.command
+		SPECS_VERSION_STRING
+	end
+end
+
+BUILTINS = ["specs", "os"]
 
 # For a given spec, return the command line instruction(s)
 # that will get the spec's version information.
-def command(spec)
-	# For builtin specs,
+def command(aspect)
+	# For builtin aspects,
 	# 1. Locate module's name via CamelCase.
 	# 2. Access module.command.
-	if BUILTINS.include?(spec)
-		mod_name = spec.camel_case
+
+	mod_name = aspect.camel_case
+
+	if BUILTINS.include?(aspect)
 		mod = Kernel.const_get(mod_name)
 		mod.command
-	elsif !BUILTINS.include?(spec)
-		require_path = "commands/#{spec}"
+	elsif !BUILTINS.include?(aspect)
+		require_path = "commands/#{aspect}"
 
-		# For nonstandard specs,
+		# For nonstandard aspects,
 		# 1. Check that a Ruby module exists in the commands subdirectory.
 		# 2. Load the module.
 		# 3. Locate module's name via CamelCase.
 		# 4. Access module.command.
 		if File.exist?("#{require_path}.rb")
 			require require_path
-			mod_name = spec.camel_case
 			mod = Kernel.const_get(mod_name)
 			mod.command
-		# If unknown spec, assume:
-		# * Spec name = binary name.
+		# If unknown aspect, assume:
+		# * Aspect name = binary name.
 		# * Binary is in PATH.
 		# * Binary CLI options use --version.
 		else
-			"#{spec} --version"
+			"#{aspect} --version"
 		end
 	end
 end
 
 # Print a command line instruction and its output,
 # Emulating a user manually entering the instruction.
-def run(cmd, spec)
-	# Newline to visually separate multiple spec commands.
+def run(cmd, aspect)
+	# Newline to visually separate multiple aspect commands.
 	puts ""
 
 	if cmd.nil?
-		puts "#{spec} spec not implemented for this system"
+		puts "#{aspect} aspect not implemented for this system"
+
+	elsif cmd == SPECS_VERSION_STRING
+		puts "specs --version"
+		puts SPECS_VERSION_STRING
 	else
 		puts cmd
 
@@ -155,7 +167,7 @@ def usage
 end
 
 def print_specs_own_version
-	puts "specs #{SPECS_VERSION}"
+	puts SPECS_VERSION_STRING
 	exit
 end
 
@@ -178,24 +190,24 @@ def main
 		usage
 	end
 
-	# Default specs
-	specs = ["os", "hardware"]
+	# Default aspects
+	aspects = ["specs", "os", "hardware"]
 	if !ARGV.empty?
-		specs = ARGV
+		aspects = ARGV
 	end
 
 	puts "Specs:\n"
 
-	specs.each { |spec|
-		# What does the spec module say to run
-		# in order to retrieve the spec information?
-		cmds = command(spec)
+	aspects.each { |aspect|
+		# What does the aspect module say to run
+		# in order to retrieve the aspect information?
+		cmds = command(aspect)
 
 		if cmds.nil? or cmds.instance_of?(String)
-			run(cmds, spec)
+			run(cmds, aspect)
 		# Module returns an array of command strings.
 		elsif cmds.instance_of?(Array)
-			cmds.each { |cmd| run(cmd, spec) }
+			cmds.each { |cmd| run(cmd, aspect) }
 		end
 	}
 end
