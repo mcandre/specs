@@ -27,10 +27,9 @@ You can copy & paste the output into bug trackers, forums, mailing lists, and li
 # REQUIREMENTS
 
 * [Ruby](http://www.ruby-lang.org/)
-* [extlib](http://rubygems.org/gems/extlib)
 
 # ADDONS
 
-Custom aspects are written as Ruby recipes in the `commands` subdirectory. Any recipes you create there are automatically part of your local aspect database.
+Custom aspects are written as Ruby recipes in the `aspects` subdirectory. Any recipes you create there are automatically part of your local aspect database.
 
 When you're happy with your recipes, issue a [git pull request](https://github.com/mcandre/specs/pull/new/master) to share them with other `specs` users.

@@ -1,5 +1,5 @@
-module Firefox
-	def Firefox.command
+module Recipe
+	def Recipe.firefox
 		# Assumes Firefox is installed in the default directory.
 		if Os.windows?
 			"C:\\Program Files (x86)\\Mozilla Firefox\\firefox --version"

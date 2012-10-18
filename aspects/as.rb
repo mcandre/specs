@@ -1,5 +1,5 @@
-module As
-	def As.command
+module Recipe
+	def Recipe.as
 		# Windows
 		if Os.windows?
 			"as -version"

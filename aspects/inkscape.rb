@@ -1,5 +1,5 @@
-module Inkscape
-	def Inkscape.command
+module Recipe
+	def Recipe.inkscape
 		# Assumes Inkscape is installed in default directory.
 		if Os.windows?
 			"C:\\Program Files (x86)\\Inkscape\\inkscape --version"

@@ -1,1 +1,1 @@
-ruby specs %*
+ruby specs.rb %*
