@@ -88,7 +88,7 @@ module Recipe
 
 	def Recipe.os
 		if Os.windows?
-			"ver"
+			"systeminfo | findstr /B /C:\"OS Name\" /C:\"OS Version\""
 		elsif Os.mac?
 			"system_profiler SPSoftwareDataType | grep 'System Version'"
 		else

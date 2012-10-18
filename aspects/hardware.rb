@@ -5,7 +5,7 @@ module Recipe
 	def Recipe.hardware
 		# Use environment variable.
 		if Os.windows?
-			"echo %System_Manufacturer%"
+			"systeminfo | find \"System Manufacturer\""
 		# Produces a noticeable delay.
 		elsif Os.mac?
 			"system_profiler | grep 'Model Identifier'"
