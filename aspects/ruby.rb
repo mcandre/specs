@@ -8,9 +8,6 @@ module Recipe
 	end
 
 	def Recipe.ruby
-		[
-			rubygems,
-			rb
-		]
+		[rubygems, rb]
 	end
 end

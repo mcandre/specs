@@ -12,10 +12,6 @@ module Recipe
 	end
 
 	def Recipe.perl
-		[
-			ppm,
-			cpan,
-			pl
-		]
+		[ppm, cpan, pl]
 	end
 end
