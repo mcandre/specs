@@ -66,12 +66,12 @@ module Os
 		not Os.windows?
 	end
 
-	def Os.linux?
-		Os.unix? and not Os.mac? and not Os.haiku?
-	end
-
 	def Os.haiku?
 		Os.raw =~ /haiku/
+	end
+
+	def Os.linux?
+		Os.unix? and not Os.mac? and not Os.haiku?
 	end
 end
 
@@ -91,6 +91,9 @@ module Recipe
 			"systeminfo | findstr /B /C:\"OS Name\" /C:\"OS Version\""
 		elsif Os.mac?
 			"system_profiler SPSoftwareDataType | grep 'System Version'"
+		elsif Os.linux?
+			"lsb_release -a"
+		# Unix
 		else
 			"uname -a"
 		end
