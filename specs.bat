@@ -1,1 +1,1 @@
-ruby specs.rb %*
+@ruby %~dp0specs.rb %*
