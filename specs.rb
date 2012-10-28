@@ -189,7 +189,7 @@ def main
 	end
 
 	# Default aspects
-	aspects = ["specs", "os", "hardware"]
+	aspects = ["os", "hardware"]
 	if !ARGV.empty?
 		aspects = ARGV
 	end
