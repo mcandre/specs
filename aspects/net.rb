@@ -1,10 +1,5 @@
 module Recipe
 	def Recipe.net
-		if Os.windows?
-			"ipconfig /all"
-		# Assumes Unix
-		else
-			"ifconfig -a"
-		end
+		"ruby -e \"require 'net/http'; puts Net::HTTP.new('icanhazip.com').request(Net::HTTP::Get.new('/', {'User-Agent'=>'curl'})).body\""
 	end
 end
