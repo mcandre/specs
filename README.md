@@ -1,5 +1,7 @@
 # specs - Software version information at your fingertips
 
+[![build status](https://secure.travis-ci.org/mcandre/specs.png)](http://travis-ci.org/mcandre/specs)
+
 # EXAMPLE
 
 Bug tracking is much easier when everyone is on the same page for which versions of software are being used. `specs` brings this information right to your fingertips.
