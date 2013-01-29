@@ -77,6 +77,14 @@ module Os
 	def Os.linux?
 		Os.unix? and not Os.mac? and not Os.haiku?
 	end
+
+	def Os.x86_64?
+		RbConfig::CONFIG["arch"] =~ /64/
+	end
+
+	def Os.x86?
+		!Os.x86_64?
+	end
 end
 
 module Recipe
@@ -103,12 +111,16 @@ module Recipe
 		end
 	end
 
+	def Recipe.arch
+		"ruby -rrbconfig -e 'puts RbConfig::CONFIG[\"arch\"]'"
+	end
+
 	def Recipe.specs
 		SPECS_VERSION_STRING
 	end
 end
 
-BUILTINS = ["specs", "os"]
+BUILTINS = ["specs", "os", "arch"]
 
 SEP = File::SEPARATOR
 
