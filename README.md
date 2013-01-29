@@ -7,6 +7,9 @@ Bug tracking is much easier when everyone is on the same page for which versions
 	$ specs chrome ruby os hardware
 	Specs:
 
+	specs 0.2
+	https://github.com/mcandre/specs#readme
+
 	/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --version 2>&1 | grep -v Unsure
 	 22.0.1229.94 
 

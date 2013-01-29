@@ -33,8 +33,9 @@ require "getoptlong"
 
 require "pathname"
 
-SPECS_VERSION = "0.1"
+SPECS_VERSION = "0.2"
 SPECS_VERSION_STRING = "specs #{SPECS_VERSION}"
+SPECS_HOME_PAGE = "https://github.com/mcandre/specs#readme"
 
 SPECS_DIR = Pathname.new(File.dirname(__FILE__))
 
@@ -180,13 +181,12 @@ def usage
 	# RDoc::usage("Usage")
 
 	system "more specs.rb"
-
 	exit
 end
 
 def print_specs_own_version
 	puts SPECS_VERSION_STRING
-	exit
+	puts SPECS_HOME_PAGE
 end
 
 def main
@@ -209,12 +209,14 @@ def main
 	end
 
 	# Default aspects
-	aspects = ["os", "hardware"]
+	aspects = ["specs", "os", "hardware"]
 	if !ARGV.empty?
 		aspects = ARGV
 	end
 
-	puts "Specs:\n"
+	aspects = aspects - ["specs"]
+	puts "Specs:\n\n"
+	print_specs_own_version
 
 	aspects.each { |aspect|
 		# What does the aspect module say to run
