@@ -47,7 +47,8 @@ SPECS_DIR = Pathname.new(File.dirname(__FILE__))
 #
 module Os
 	def Os.raw
-		Config::CONFIG["host_os"]
+		# Config deprecated in Ruby 1.9
+		RbConfig::CONFIG["host_os"]
 	end
 
 	# A series of OS descriptions.
@@ -128,7 +129,7 @@ def command(aspect)
 	end
 
 	# Known aspect.
-	if Recipe.methods.include?(aspect)
+	if Recipe.methods.include?(aspect.to_sym)
 		Recipe.send(aspect.to_sym)
 	# Unknown aspect.
 	# Default to --version flag.
