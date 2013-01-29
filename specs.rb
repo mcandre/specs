@@ -27,7 +27,10 @@
 #    print specs' own version
 
 require "getoptlong"
-require "rdoc/usage"
+
+# Not in Ruby 1.9
+# require "rdoc/usage"
+
 require "pathname"
 
 SPECS_VERSION = "0.1"
@@ -160,7 +163,11 @@ def run(cmd, aspect)
 end
 
 def usage
-	RDoc::usage("Usage")
+	# Not in Ruby 1.9
+	# RDoc::usage("Usage")
+
+	system "more specs.rb"
+
 	exit
 end
 
