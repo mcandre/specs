@@ -119,9 +119,33 @@ module Recipe
 	def Recipe.specs
 		SPECS_VERSION_STRING
 	end
+
+	def Recipe.ruby_v
+		RUBY_VERSION
+	end
+
+	def Recipe.ruby1_8?
+		RUBY_VERSION =~ /^1\.8/
+	end
+
+	def Recipe.ruby1_9?	
+		RUBY_VERSION =~ /^1\.9/
+	end
+
+	def Recipe.rubygems
+		"gem --version"
+	end
+
+	def Recipe.rb
+		"ruby --version"
+	end
+
+	def Recipe.ruby
+		[rubygems, rb]
+	end
 end
 
-BUILTINS = ["specs", "os", "arch"]
+BUILTINS = ["specs", "os", "arch", "ruby"]
 
 SEP = File::SEPARATOR
 
@@ -141,9 +165,11 @@ def command(aspect)
 		end
 	end
 
+	method = aspect.to_sym
+
 	# Known aspect.
-	if Recipe.methods.include?(aspect.to_sym)
-		Recipe.send(aspect.to_sym)
+	if Recipe.methods.include?(method)
+		Recipe.send(method)
 	# Unknown aspect.
 	# Default to --version flag.
 	else
@@ -189,7 +215,17 @@ def print_specs_own_version
 	puts SPECS_HOME_PAGE
 end
 
+def check_ruby_version
+	if RUBY_VERSION =~ /^1\.8/
+		puts "Requires Ruby 1.9+"
+		puts "http://www.ruby-lang.org/"
+		exit
+	end
+end
+
 def main
+	check_ruby_version
+
 	opts = GetoptLong.new(
 		["--help", "-h", GetoptLong::NO_ARGUMENT],
 		["--version", "-v", GetoptLong::NO_ARGUMENT]
