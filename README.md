@@ -17,7 +17,7 @@ Bug tracking is much easier when everyone is on the same page for which versions
 	1.3.6
 
 	ruby --version
-	ruby 1.8.7 (2012-02-08 patchlevel 358) [universal-darwin12.0]
+	ruby 1.9.3
 
 	system_profiler SPSoftwareDataType | grep 'System Version'
 	      System Version: OS X 10.8.2 (12C54)
@@ -29,10 +29,10 @@ You can copy & paste the output into bug trackers, forums, mailing lists, and li
 
 # REQUIREMENTS
 
-* [Ruby](http://www.ruby-lang.org/)
+* [Ruby 1.9](http://www.ruby-lang.org/)
 
 # ADDONS
 
 Custom aspects are written as Ruby recipes in the `aspects` subdirectory. Any recipes you create there are automatically part of your local aspect database.
 
-When you're happy with your recipes, issue a [git pull request](https://github.com/mcandre/specs/pull/new/master) to share them with other `specs` users.
+When you're happy with your recipes, issue a [pull request](https://github.com/mcandre/specs/pull/new/master) to share them with other `specs` users.
