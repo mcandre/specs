@@ -1,5 +1,5 @@
 module Recipe
-	def Recipe.opera
+	def self.opera
 		# Assumes opera in PATH.
 		if Os.unix? and not Os.mac?
 			"opera -version"

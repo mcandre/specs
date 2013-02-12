@@ -2,7 +2,7 @@
 module Recipe
 	# ModuleName.command returns the appropriate command line instruction for returning the relevant specifications.
 	# OS-contextual instructions can be modulated by querying the Os module (see the root specs Ruby code).
-	def Recipe.hardware
+	def self.hardware
 		# Use environment variable.
 		if Os.windows?
 			"systeminfo | findstr /B /C:\"System Manufacturer\" /C:\"System Model\""

@@ -1,5 +1,5 @@
 module Recipe
-	def Recipe.xcode
+	def self.xcode
 		if Os.mac?
 			"xcodebuild -version"
 		end

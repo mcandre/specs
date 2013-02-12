@@ -44,7 +44,7 @@ SPECS_DIR = Pathname.new(File.dirname(__FILE__))
 #       "firefox --version" in Unix
 #
 module Os
-	def Os.raw
+	def self.raw
 		# Config deprecated in Ruby 1.9
 		RbConfig::CONFIG["host_os"]
 	end
@@ -52,41 +52,41 @@ module Os
 	# A series of OS descriptions.
 	# Not all of these are mutually exclusive.
 
-	def Os.windows?
-		Os.raw =~ /cygwin|mswin|mingw|bccwin|wince|emx/
+	def self.windows?
+		self.raw =~ /cygwin|mswin|mingw|bccwin|wince|emx/
 	end
 
-	def Os.mingw?
-		Os.raw =~ /cygwin|mingw/
+	def self.mingw?
+		self.raw =~ /cygwin|mingw/
 	end
 
-	def Os.mac?
-		Os.raw =~ /darwin/
+	def self.mac?
+		self.raw =~ /darwin/
 	end
 
-	def Os.unix?
-		not Os.windows?
+	def self.unix?
+		not self.windows?
 	end
 
-	def Os.haiku?
-		Os.raw =~ /haiku/
+	def self.haiku?
+		self.raw =~ /haiku/
 	end
 
-	def Os.linux?
-		Os.unix? and not Os.mac? and not Os.haiku?
+	def self.linux?
+		self.unix? and not self.mac? and not self.haiku?
 	end
 
-	def Os.x86_64?
+	def self.x86_64?
 		RbConfig::CONFIG["arch"] =~ /64/
 	end
 
-	def Os.x86?
-		!Os.x86_64?
+	def self.x86?
+		!self.x86_64?
 	end
 end
 
 module Recipe
-	def Recipe.command_not_found
+	def self.command_not_found
 		# Windows but not MinGW
 		if Os.windows? and !Os.mingw?
 			"not recognized as an internal or external command"
@@ -96,7 +96,7 @@ module Recipe
 		end
 	end
 
-	def Recipe.os
+	def self.os
 		if Os.windows?
 			"systeminfo | findstr /B /C:\"OS Name\" /C:\"OS Version\""
 		elsif Os.mac?
@@ -109,35 +109,35 @@ module Recipe
 		end
 	end
 
-	def Recipe.arch
+	def self.arch
 		"ruby -rrbconfig -e 'puts RbConfig::CONFIG[\"arch\"]'"
 	end
 
-	def Recipe.specs
+	def self.specs
 		SPECS_VERSION_STRING
 	end
 
-	def Recipe.ruby_v
+	def self.ruby_v
 		RUBY_VERSION
 	end
 
-	def Recipe.ruby1_8?
+	def self.ruby1_8?
 		RUBY_VERSION =~ /^1\.8/
 	end
 
-	def Recipe.ruby1_9?	
+	def self.ruby1_9?	
 		RUBY_VERSION =~ /^1\.9/
 	end
 
-	def Recipe.rubygems
+	def self.rubygems
 		"gem --version"
 	end
 
-	def Recipe.rb
+	def self.rb
 		"ruby --version"
 	end
 
-	def Recipe.ruby
+	def self.ruby
 		[rubygems, rb]
 	end
 end

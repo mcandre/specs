@@ -1,5 +1,5 @@
 module Recipe
-	def Recipe.virtualbox
+	def self.virtualbox
 		# Assumes Firefox is installed in the default directory.
 		if Os.windows?
 			if Os.x86?

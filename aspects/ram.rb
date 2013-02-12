@@ -1,5 +1,5 @@
 module Recipe
-	def Recipe.ram
+	def self.ram
 		if Os.windows?
 			"systeminfo | findstr /C:\"Total Physical Memory\""
 		elsif Os.mac?

@@ -1,5 +1,5 @@
 module Recipe
-	def Recipe.shell
+	def self.shell
 		if Os.windows?
 			"echo %cmdextversion%"
 		elsif Os.unix?

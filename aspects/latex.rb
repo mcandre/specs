@@ -1,5 +1,5 @@
 module Recipe
-	def Recipe.latex
+	def self.latex
 		if Os.unix?
 			"pdflatex --version"
 		end

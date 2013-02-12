@@ -1,5 +1,5 @@
 module Recipe
-	def Recipe.bios
+	def self.bios
 		if Os.windows?
 			"systeminfo | findstr /B /C:\"BIOS Version\""
 		end

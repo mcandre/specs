@@ -1,5 +1,5 @@
 module Recipe
-	def Recipe.ld
+	def self.ld
 		"ld -v"
 	end
 end

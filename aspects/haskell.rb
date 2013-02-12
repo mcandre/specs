@@ -1,17 +1,17 @@
 module Recipe
-	def Recipe.cabal
+	def self.cabal
 		"cabal --version"
 	end
 
-	def Recipe.ghc
+	def self.ghc
 		"ghc --version"
 	end
 
-	def Recipe.haskellplatform
+	def self.haskellplatform
 		"ghc-pkg field haskell-platform version"
 	end
 
-	def Recipe.haskell
+	def self.haskell
 		[
 			cabal,
 			ghc,

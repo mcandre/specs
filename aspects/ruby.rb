@@ -1,13 +1,13 @@
 module Recipe
-	def Recipe.rubygems
+	def self.rubygems
 		"gem --version"
 	end
 
-	def Recipe.rb
+	def self.rb
 		"ruby --version"
 	end
 
-	def Recipe.ruby
+	def self.ruby
 		[rubygems, rb]
 	end
 end

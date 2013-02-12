@@ -1,5 +1,5 @@
 module Recipe
-	def Recipe.as
+	def self.as
 		# Windows
 		if Os.windows?
 			"as -version"

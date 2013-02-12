@@ -1,17 +1,17 @@
 module Recipe
-	def Recipe.ppm
+	def self.ppm
 		"ppm --version"
 	end
 
-	def Recipe.cpan
+	def self.cpan
 		"cpan --version"
 	end
 
-	def Recipe.pl
+	def self.pl
 		"perl --version"
 	end
 
-	def Recipe.perl
+	def self.perl
 		[ppm, cpan, pl]
 	end
 end

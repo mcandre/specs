@@ -1,5 +1,5 @@
 module Recipe
-	def Recipe.cpu
+	def self.cpu
 		if Os.windows?
 			"wmic cpu get NumberOfCores, NumberOfLogicalProcessors"
 		elsif Os.mac?
