@@ -4,7 +4,12 @@
 
 Bug tracking is much easier when everyone is on the same page for which versions of software are being used. `specs` brings this information right to your fingertips.
 
+You type this:
+
 	$ specs chrome ruby os hardware
+
+Specs prints this:
+
 	Specs:
 
 	specs 0.2
