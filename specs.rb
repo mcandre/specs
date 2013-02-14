@@ -162,7 +162,10 @@ def command(aspect)
 		end
 	end
 
-	method = aspect.to_sym
+	# Ruby methods can't use hypens (-),
+	# So translate to underscores (_)
+	# When looking up known aspects.
+	method = aspect.gsub("-", "_").to_sym
 
 	# Known aspect.
 	if Recipe.methods.include?(method)
