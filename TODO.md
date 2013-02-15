@@ -1,8 +1,3 @@
-# Automate Installation
-
-* Windows
-* Unix (sudo ln -s)
-
 # Recipes
 
 ## Browsers

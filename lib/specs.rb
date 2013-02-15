@@ -264,13 +264,3 @@ def main
 		end
 	}
 end
-
-# Allow specs to be imported by other Ruby code.
-# If run alone, call the main function.
-if __FILE__==$0
-	begin
-		main
-	rescue Interrupt => e
-		nil
-	end
-end
