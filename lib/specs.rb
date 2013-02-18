@@ -27,11 +27,12 @@
 #    print specs' own version
 
 require "getoptlong"
-require "rdoc/usage"
+
 require "pathname"
 
-SPECS_VERSION = "0.1"
+SPECS_VERSION = "0.2"
 SPECS_VERSION_STRING = "specs #{SPECS_VERSION}"
+SPECS_HOME_PAGE = "https://github.com/mcandre/specs#readme"
 
 SPECS_DIR = Pathname.new(File.dirname(__FILE__))
 
@@ -43,40 +44,49 @@ SPECS_DIR = Pathname.new(File.dirname(__FILE__))
 #       "firefox --version" in Unix
 #
 module Os
-	def Os.raw
-		Config::CONFIG["host_os"]
+	def self.raw
+		# Config deprecated in Ruby 1.9
+		RbConfig::CONFIG["host_os"]
 	end
 
 	# A series of OS descriptions.
 	# Not all of these are mutually exclusive.
 
-	def Os.windows?
-		Os.raw =~ /cygwin|mswin|mingw|bccwin|wince|emx/
+	def self.windows?
+		self.raw =~ /cygwin|mswin|mingw|bccwin|wince|emx/
 	end
 
-	def Os.mingw?
-		Os.raw =~ /cygwin|mingw/
+	def self.mingw?
+		self.raw =~ /cygwin|mingw/
 	end
 
-	def Os.mac?
-		Os.raw =~ /darwin/
+	def self.mac?
+		self.raw =~ /darwin/
 	end
 
-	def Os.unix?
-		not Os.windows?
+	def self.unix?
+		not self.windows?
 	end
 
-	def Os.haiku?
-		Os.raw =~ /haiku/
+	def self.haiku?
+		self.raw =~ /haiku/
 	end
 
-	def Os.linux?
-		Os.unix? and not Os.mac? and not Os.haiku?
+	def self.linux?
+		self.unix? and not self.mac? and not self.haiku?
+	end
+
+	def self.x86_64?
+		RbConfig::CONFIG["arch"] =~ /64/
+	end
+
+	def self.x86?
+		!self.x86_64?
 	end
 end
 
 module Recipe
-	def Recipe.command_not_found
+	def self.command_not_found
 		# Windows but not MinGW
 		if Os.windows? and !Os.mingw?
 			"not recognized as an internal or external command"
@@ -86,7 +96,7 @@ module Recipe
 		end
 	end
 
-	def Recipe.os
+	def self.os
 		if Os.windows?
 			"systeminfo | findstr /B /C:\"OS Name\" /C:\"OS Version\""
 		elsif Os.mac?
@@ -99,12 +109,40 @@ module Recipe
 		end
 	end
 
-	def Recipe.specs
+	def self.arch
+		"ruby -rrbconfig -e 'puts RbConfig::CONFIG[\"arch\"]'"
+	end
+
+	def self.specs
 		SPECS_VERSION_STRING
+	end
+
+	def self.ruby_v
+		RUBY_VERSION
+	end
+
+	def self.ruby1_8?
+		RUBY_VERSION =~ /^1\.8/
+	end
+
+	def self.ruby1_9?	
+		RUBY_VERSION =~ /^1\.9/
+	end
+
+	def self.rubygems
+		"gem --version"
+	end
+
+	def self.rb
+		"ruby --version"
+	end
+
+	def self.ruby
+		[rubygems, rb]
 	end
 end
 
-BUILTINS = ["specs", "os"]
+BUILTINS = ["specs", "os", "arch", "ruby"]
 
 SEP = File::SEPARATOR
 
@@ -124,9 +162,14 @@ def command(aspect)
 		end
 	end
 
+	# Ruby methods can't use hypens (-),
+	# So translate to underscores (_)
+	# When looking up known aspects.
+	method = aspect.gsub("-", "_").to_sym
+
 	# Known aspect.
-	if Recipe.methods.include?(aspect)
-		Recipe.send(aspect.to_sym)
+	if Recipe.methods.include?(method)
+		Recipe.send(method)
 	# Unknown aspect.
 	# Default to --version flag.
 	else
@@ -160,16 +203,26 @@ def run(cmd, aspect)
 end
 
 def usage
-	RDoc::usage("Usage")
+	system "more specs.rb"
 	exit
 end
 
 def print_specs_own_version
 	puts SPECS_VERSION_STRING
-	exit
+	puts SPECS_HOME_PAGE
+end
+
+def check_ruby_version
+	if RUBY_VERSION =~ /^1\.8/
+		puts "Requires Ruby 1.9+"
+		puts "http://www.ruby-lang.org/"
+		exit
+	end
 end
 
 def main
+	check_ruby_version
+
 	opts = GetoptLong.new(
 		["--help", "-h", GetoptLong::NO_ARGUMENT],
 		["--version", "-v", GetoptLong::NO_ARGUMENT]
@@ -194,7 +247,9 @@ def main
 		aspects = ARGV
 	end
 
-	puts "Specs:\n"
+	aspects = aspects - ["specs"]
+	puts "Specs:\n\n"
+	print_specs_own_version
 
 	aspects.each { |aspect|
 		# What does the aspect module say to run
@@ -208,14 +263,4 @@ def main
 			cmds.each { |cmd| run(cmd, aspect) }
 		end
 	}
-end
-
-# Allow specs to be imported by other Ruby code.
-# If run alone, call the main function.
-if __FILE__==$0
-	begin
-		main
-	rescue Interrupt => e
-		nil
-	end
 end
