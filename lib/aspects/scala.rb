@@ -1,5 +1,5 @@
 module Recipe
-	def Recipe.scala
+	def self.scala
 		"scalac -version"
 	end
 end

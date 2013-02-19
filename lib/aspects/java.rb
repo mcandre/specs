@@ -1,5 +1,5 @@
 module Recipe
-	def Recipe.java
+	def self.java
 		"java -version"
 	end
 end
