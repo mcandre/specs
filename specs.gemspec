@@ -12,6 +12,5 @@ Gem::Specification.new { |s|
 	s.executables = ["specs"]
 
 	s.files = Dir["lib/*.rb"] + Dir["lib/aspects/*.rb"] + ["LICENSE.md"]
-
 	s.homepage = "https://github.com/mcandre/specs"
 }
