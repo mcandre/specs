@@ -6,29 +6,29 @@ Bug tracking is much easier when everyone is on the same page for which versions
 
 You type this:
 
-	$ specs chrome ruby os hardware
+    $ specs chrome ruby os hardware
 
 Specs prints this:
 
-	Specs:
+    Specs:
 
-	specs 0.2
-	https://github.com/mcandre/specs#readme
+    specs 0.3
+    https://github.com/mcandre/specs#readme
 
-	/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --version 2>&1 | grep -v Unsure
-	 22.0.1229.94 
+    /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --version 2>&1 | grep -v Unsure
+     22.0.1229.94
 
-	gem --version
-	1.3.6
+    gem --version
+    1.3.6
 
-	ruby --version
-	ruby 1.9.3
+    ruby --version
+    ruby 1.9.3
 
-	system_profiler SPSoftwareDataType | grep 'System Version'
-	      System Version: OS X 10.8.2 (12C54)
+    system_profiler SPSoftwareDataType | grep 'System Version'
+          System Version: OS X 10.8.2 (12C54)
 
-	system_profiler | grep 'Model Identifier'
-	      Model Identifier: MacBookPro5,5
+    system_profiler | grep 'Model Identifier'
+          Model Identifier: MacBookPro5,5
 
 You can copy & paste the output into bug trackers, forums, mailing lists, and live chat sessions. `specs` prints the command line instructions that obtain the version information, so that anyone, even non-`specs` users, can obtain the same information quickly and easily.
 
