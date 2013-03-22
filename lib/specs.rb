@@ -166,13 +166,7 @@ def command(aspect)
   # Package?
   if aspect.include?(":")
     package_manager, package = aspect.split(":")
-
-    puts "Package manager: #{package_manager}"
-    puts "Package: #{package}"
-
     package_manager = package_manager.to_sym
-
-    puts "Package manager: #{package_manager}"
 
     if Recipe::Package.methods.include?(package_manager)
       Recipe::Package.send(package_manager, package)
