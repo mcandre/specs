@@ -29,7 +29,7 @@
 require "getoptlong"
 require "pathname"
 
-SPECS_VERSION = "0.2"
+SPECS_VERSION = "0.3"
 SPECS_VERSION_STRING = "specs #{SPECS_VERSION}"
 SPECS_HOME_PAGE = "https://github.com/mcandre/specs#readme"
 
@@ -85,6 +85,9 @@ module Os
 end
 
 module Recipe
+  module Package
+  end
+
   def self.command_not_found
     # Windows but not MinGW
     if Os.windows? and !Os.mingw?
@@ -148,29 +151,37 @@ SEP = File::SEPARATOR
 # .../specs/aspects
 RECIPE_DIR = [SPECS_DIR, "aspects"].join(SEP)
 
+Dir[File.join(RECIPE_DIR, '**', '*.rb')].each do |file|
+  require File.expand_path(file)
+end
+
 # For a given spec, return the command line instruction(s)
 # that will get the spec's version information.
 def command(aspect)
-  # Custom aspect?
-  if !BUILTINS.include?(aspect)
-    require_path = "#{RECIPE_DIR}#{SEP}#{aspect}.rb"
-
-    # Attempt to load custom aspect recipe.
-    if File.exist?(require_path)
-      require require_path
-    end
-  end
-
   # Ruby methods can't use hypens (-),
   # So translate to underscores (_)
   # When looking up known aspects.
   method = aspect.gsub("-", "_").to_sym
 
-  # Known aspect.
-  if Recipe.methods.include?(method)
+  # Package?
+  if aspect.include?(":")
+    package_manager, package = aspect.split(":")
+
+    puts "Package manager: #{package_manager}"
+    puts "Package: #{package}"
+
+    package_manager = package_manager.to_sym
+
+    puts "Package manager: #{package_manager}"
+
+    if Recipe::Package.methods.include?(package_manager)
+      Recipe::Package.send(package_manager, package)
+    end
+  # Known aspect?
+  elsif Recipe.methods.include?(method)
     Recipe.send(method)
-    # Unknown aspect.
-    # Default to --version flag.
+  # Unknown aspect.
+  # Default to --version flag.
   else
     "#{aspect} --version"
   end
