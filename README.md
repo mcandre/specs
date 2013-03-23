@@ -32,6 +32,19 @@ Specs prints this:
 
 You can copy & paste the output into bug trackers, forums, mailing lists, and live chat sessions. `specs` prints the command line instructions that obtain the version information, so that anyone, even non-`specs` users, can obtain the same information quickly and easily.
 
+# Package Versions
+
+specs now supports retrieving version numbers from packages in addition to programs. Any package manager specs is aware of can be queried. For example:
+
+    $ specs gem:multi_json
+    Specs:
+
+    specs 0.3
+    https://github.com/mcandre/specs#readme
+
+    gem list | grep multi_json
+    multi_json (1.7.2)
+
 # REQUIREMENTS
 
 * [Ruby 1.9](http://www.ruby-lang.org/)
