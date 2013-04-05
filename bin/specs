@@ -4,7 +4,7 @@ require "rubygems"
 require "specs"
 
 begin
-	main
+  main
 rescue Interrupt => e
-	nil
+  nil
 end

@@ -206,16 +206,6 @@ def run(cmd, aspect)
   end
 end
 
-def usage
-  system "more specs.rb"
-  exit
-end
-
-def print_specs_own_version
-  puts SPECS_VERSION_STRING
-  puts SPECS_HOME_PAGE
-end
-
 def check_ruby_version
   if RUBY_VERSION =~ /^1\.8/
     puts "Requires Ruby 1.9+"
@@ -227,23 +217,9 @@ end
 def main
   check_ruby_version
 
-  opts = GetoptLong.new(
-                        ["--help", "-h", GetoptLong::NO_ARGUMENT],
-                        ["--version", "-v", GetoptLong::NO_ARGUMENT]
-                        )
+  puts "Specs:\n\n#{SPECS_VERSION_STRING}\n#{SPECS_HOME_PAGE}"
 
-  begin
-    opts.each { |option, value|
-      case option
-      when "--help"
-        usage
-      when "--version"
-        print_specs_own_version
-      end
-    }
-  rescue GetoptLong::InvalidOption
-    usage
-  end
+  exit if ARGV.include?("--version")
 
   # Default aspects
   aspects = ["specs", "os", "hardware"]
@@ -252,8 +228,6 @@ def main
   end
 
   aspects = aspects - ["specs"]
-  puts "Specs:\n\n"
-  print_specs_own_version
 
   aspects.each { |aspect|
     # What does the aspect module say to run
