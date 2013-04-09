@@ -187,9 +187,8 @@ def run(cmd, aspect)
   # Newline to visually separate multiple aspect commands.
   puts ""
 
-  if cmd.nil?
+  if !cmd
     puts "#{aspect} aspect not implemented for this system"
-
   elsif cmd == SPECS_VERSION_STRING
     puts "specs --version"
     puts SPECS_VERSION_STRING
@@ -234,7 +233,7 @@ def main
     # in order to retrieve the aspect information?
     cmds = command(aspect)
 
-    if cmds.nil? or cmds.instance_of?(String)
+    if !cmds or cmds.instance_of?(String)
       run(cmds, aspect)
       # Module returns an array of command strings.
     elsif cmds.instance_of?(Array)
