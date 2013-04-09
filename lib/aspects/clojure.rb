@@ -4,7 +4,7 @@ module Recipe
   end
 
   def self.clj
-    "clj -e '(println \"Clojure \" (clojure-version))'"
+    "lein exec '(println \"Clojure \" (clojure-version))'"
   end
 
   def self.clojure
