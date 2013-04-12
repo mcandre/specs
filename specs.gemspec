@@ -3,7 +3,7 @@ Gem::Specification.new { |s|
   s.summary = "Software version information at your fingertips"
   s.description = "See README.md for example usage"
 
-  s.version = 0.3
+  s.version = 0.4
   s.date = "2013-03-23"
 
   s.authors = ["Andrew Pennebaker"]

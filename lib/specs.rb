@@ -29,7 +29,7 @@
 require "getoptlong"
 require "pathname"
 
-SPECS_VERSION = "0.3"
+SPECS_VERSION = "0.4"
 SPECS_VERSION_STRING = "specs #{SPECS_VERSION}"
 SPECS_HOME_PAGE = "https://github.com/mcandre/specs#readme"
 
