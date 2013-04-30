@@ -1,8 +1,4 @@
 module Recipe
-  def self.ppm
-    "ppm --version"
-  end
-
   def self.cpan
     "cpan --version"
   end
@@ -12,6 +8,6 @@ module Recipe
   end
 
   def self.perl
-    [ppm, cpan, pl]
+    [cpan, pl]
   end
 end
