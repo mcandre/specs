@@ -2,6 +2,7 @@ Gem::Specification.new { |s|
   s.name = "specs"
   s.summary = "Software version information at your fingertips"
   s.description = "See README.md for example usage"
+  s.license = "FreeBSD"
 
   s.version = 0.4
   s.date = "2013-03-23"
