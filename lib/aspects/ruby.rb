@@ -5,6 +5,10 @@ module Recipe
     end
   end
 
+  def self.bundler
+    "bundle --version"
+  end
+
   def self.rubygems
     "gem --version"
   end
@@ -14,6 +18,6 @@ module Recipe
   end
 
   def self.ruby
-    [rubygems, rb]
+    [bundler, rubygems, rb]
   end
 end
