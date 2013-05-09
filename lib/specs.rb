@@ -227,15 +227,19 @@ def check_ruby_version
   end
 end
 
-def main
-  check_ruby_version
-
+def usage
   puts "Specs:\n\n#{SPECS_VERSION_STRING}\n#{SPECS_HOME_PAGE}"
 
   exit if ARGV.include?("--version")
+end
+
+def main
+  check_ruby_version
+
+  usage
 
   # Default aspects
-  aspects = ["specs", "os", "hardware"]
+  aspects = ["os", "hardware"]
   if !ARGV.empty?
     aspects = ARGV
   end
