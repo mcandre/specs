@@ -83,7 +83,7 @@ module Os
     !self.x86_64?
   end
 
-  def self._os
+  def self.os_name
     if self.windows?
       :windows
     elsif self.mac?
@@ -113,7 +113,7 @@ module Recipe
   end
 
   def self.os
-    case Os._os
+    case Os.os_name
     when :windows
       "systeminfo | findstr /B /C:\"OS Name\" /C:\"OS Version\""
     when :mac

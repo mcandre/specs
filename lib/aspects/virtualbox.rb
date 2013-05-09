@@ -1,6 +1,6 @@
 module Recipe
   def self.virtualbox
-    case Os._os
+    case Os.os_name
     when :windows
       if Os.x86?
         "\"C:\\Program Files\\Oracle\\VirtualBox\\VBoxManage\" --version"

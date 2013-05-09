@@ -1,6 +1,6 @@
 module Recipe
   def self.inkscape
-    case Os._os
+    case Os.os_name
     when :windows
       if Os.x86_64?
         "C:\\Program Files (x86)\\Inkscape\\inkscape --version"
