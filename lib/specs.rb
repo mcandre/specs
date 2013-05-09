@@ -72,7 +72,7 @@ module Os
   end
 
   def self.linux?
-    self.unix? and not self.mac? and not self.haiku?
+    self.unix? and not (self.mac? or self.haiku?)
   end
 
   def self.x86_64?

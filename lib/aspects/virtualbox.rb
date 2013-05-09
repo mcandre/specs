@@ -4,7 +4,7 @@ module Recipe
     if Os.windows?
       if Os.x86?
         "\"C:\\Program Files\\Oracle\\VirtualBox\\VBoxManage\" --version"
-      elsif Os.x86_64?
+      else
         "C:\\Program Files (x86)\\Oracle\\VirtualBox\\VBoxManage --version"
       end
     elsif Os.mac?

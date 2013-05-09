@@ -4,7 +4,7 @@ module Recipe
     if Os.windows?
       if Os.x86_64?
         "C:\\Program Files (x86)\\Inkscape\\inkscape --version"
-      elsif Os.x86?
+      else
         "\"C:\\Program Files\\Inkscape\\inkscape\" --version"
       end
     elsif Os.mac?

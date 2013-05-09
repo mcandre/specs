@@ -5,19 +5,11 @@ module Recipe
     end
   end
 
-  def self.bundler
-    "bundle --version"
-  end
+  @bundler = "bundle --version"
 
-  def self.rubygems
-    "gem --version"
-  end
+  @rubygems = "gem --version"
 
-  def self.rb
-    "ruby --version"
-  end
+  @rb = "ruby --version"
 
-  def self.ruby
-    [bundler, rubygems, rb]
-  end
+  @ruby = [@bundler, @rubygems, @rb]
 end
