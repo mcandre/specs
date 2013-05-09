@@ -82,6 +82,20 @@ module Os
   def self.x86?
     !self.x86_64?
   end
+
+  def self._os
+    if self.windows?
+      :windows
+    elsif self.mac?
+      :mac
+    elsif self.linux?
+      :linux
+    elsif self.haiku?
+      :haiku
+    else
+      :unix
+    end
+  end
 end
 
 module Recipe
@@ -99,14 +113,14 @@ module Recipe
   end
 
   def self.os
-    if Os.windows?
+    case Os._os
+    when :windows
       "systeminfo | findstr /B /C:\"OS Name\" /C:\"OS Version\""
-    elsif Os.mac?
-      "system_profiler SPSoftwareDataType | grep 'System Version'"
-    elsif Os.linux?
+    when :mac
+        "system_profiler SPSoftwareDataType | grep 'System Version'"
+    when :linux
       "lsb_release -a"
-      # Unix
-    else
+    when :unix
       "uname -a"
     end
   end
