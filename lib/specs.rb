@@ -141,8 +141,12 @@ module Recipe
     RUBY_VERSION =~ /^1\.8/
   end
 
-  def self.ruby1_9?       
+  def self.ruby1_9?
     RUBY_VERSION =~ /^1\.9/
+  end
+
+  def self.ruby2?
+    RUBY_VERSION =~ /^2/
   end
 
   def self.rubygems
@@ -220,8 +224,8 @@ def run(cmd, aspect)
 end
 
 def check_ruby_version
-  if RUBY_VERSION =~ /^1\.8/
-    puts "Requires Ruby 1.9+"
+  if Recipe.ruby1_8?
+    puts "Requires Ruby 1.9 or higher."
     puts "http://www.ruby-lang.org/"
     exit
   end
