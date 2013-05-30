@@ -15,6 +15,10 @@ task :publish => [:gem] do
   sh "gem push ./specs-#{SPECS_VERSION}.gem"
 end
 
+task :lint => [] do
+  sh "bundle exec reek -q lib; true"
+end
+
 task :clean => [] do
   sh "rm *.gem"
 end
