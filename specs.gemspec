@@ -16,4 +16,5 @@ Gem::Specification.new { |s|
   s.homepage = "https://github.com/mcandre/specs"
 
   s.add_development_dependency "reek"
+  s.add_development_dependency "flay"
 }

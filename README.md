@@ -51,17 +51,23 @@ specs now supports retrieving version numbers from packages in addition to progr
 
 # INSTALL
 
-## Globally
-
     $ gem install specs
-
-## From GitHub
-
-    $ git clone https://github.com/mcandre/specs.git
-    $ rake test
 
 # ADDONS
 
 Custom aspects are written as Ruby recipes in the `aspects` subdirectory. Any recipes you create there are automatically part of your local aspect database.
 
 When you're happy with your recipes, issue a [pull request](https://github.com/mcandre/specs/pull/new/master) to share them with other `specs` users.
+
+# DEVELOPMENT
+
+Checkout a copy of the code, and get the developer dependencies:
+
+    $ git clone https://github.com/mcandre/specs.git
+    $ bundle install
+
+## Linting
+
+Keep the code looking good with the linter tools:
+
+    $ rake lint
