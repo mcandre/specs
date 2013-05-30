@@ -64,6 +64,7 @@ When you're happy with your recipes, issue a [pull request](https://github.com/m
 Checkout a copy of the code, and get the developer dependencies:
 
     $ git clone https://github.com/mcandre/specs.git
+    $ cd specs
     $ bundle install
 
 ## Linting
