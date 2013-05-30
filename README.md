@@ -65,7 +65,7 @@ Checkout a copy of the code, and get the developer dependencies:
 
     $ git clone https://github.com/mcandre/specs.git
     $ cd specs
-    $ bundle install
+    $ bundle
 
 ## Linting
 
