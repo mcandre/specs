@@ -18,7 +18,7 @@ end
 
 task :lint => [] do
   sh "bundle exec reek -q lib; true"
-  sh "bundle exec flay lib; true"
+  sh "bundle exec flay lib"
 end
 
 task :clean => [] do
