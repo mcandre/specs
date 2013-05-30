@@ -3,7 +3,6 @@ require "./lib/specs"
 task :default => "test"
 
 task :gem => "specs.gemspec" do
-  sh "bundle install"
   sh "gem build specs.gemspec"
   sh "gem install ./specs-#{SPECS_VERSION}.gem"
 end
