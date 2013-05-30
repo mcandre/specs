@@ -47,7 +47,18 @@ specs now supports retrieving version numbers from packages in addition to progr
 
 # REQUIREMENTS
 
-* [Ruby 1.9](http://www.ruby-lang.org/)
+* [Ruby](http://www.ruby-lang.org/) 1.9 or higher
+
+# INSTALL
+
+## Globally
+
+    $ gem install specs
+
+## From GitHub
+
+    $ git clone https://github.com/mcandre/specs.git
+    $ rake test
 
 # ADDONS
 
