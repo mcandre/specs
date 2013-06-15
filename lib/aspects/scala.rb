@@ -3,7 +3,11 @@ module Recipe
     "scalac -version"
   end
 
+  def self.sbt
+    "sbt sbt-version"
+  end
+
   def self.scala
-    [scalac, java]
+    [sbt, scalac, java]
   end
 end
