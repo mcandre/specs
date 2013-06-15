@@ -1,4 +1,10 @@
 module Recipe
+  module Package
+    def self.cabal(package)
+      "ghc-pkg list #{package}"
+    end
+  end
+
   def self.cabal
     "cabal --version"
   end
