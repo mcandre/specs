@@ -4,7 +4,7 @@ module Recipe
   end
 
   def self.classpath
-    if Os.windows?
+    if Os.windows? and not Os.mingw?
       "echo %CLASSPATH"
     else
       "echo $CLASSPATH"
@@ -12,7 +12,7 @@ module Recipe
   end
 
   def self.javahome
-    if Os.windows?
+    if Os.windows? and not Os.mingw?
       "echo %JAVA_HOME%"
     else
       "echo $JAVA_HOME"
