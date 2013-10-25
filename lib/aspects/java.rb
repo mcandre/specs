@@ -23,7 +23,11 @@ module Recipe
     "java -version"
   end
 
+  def self.oakc
+    "javac -version"
+  end
+
   def self.java
-    [mvn, classpath, javahome, oak]
+    [mvn, classpath, javahome, oakc, oak]
   end
 end
