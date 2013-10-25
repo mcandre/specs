@@ -9,7 +9,7 @@ task :test => [:gem] do
   sh "specs ruby os hardware"
 end
 
-task :publish => [:gem] do
+task :publish => [:clean, :gem] do
   sh "gem push ./specs-*.gem"
 end
 
