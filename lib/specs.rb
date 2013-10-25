@@ -29,6 +29,7 @@
 require "getoptlong"
 require "pathname"
 
+require "version"
 SPECS_VERSION_STRING = "specs #{Specs::VERSION}"
 
 SPECS_HOME_PAGE = "https://github.com/mcandre/specs#readme"
