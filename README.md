@@ -12,7 +12,7 @@ Specs prints this:
 
     Specs:
 
-    specs 0.6
+    specs 0.7
     https://github.com/mcandre/specs#readme
 
     /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --version 2>&1 | grep -v Unsure
@@ -39,7 +39,7 @@ specs now supports retrieving version numbers from packages in addition to progr
     $ specs gem:multi_json
     Specs:
 
-    specs 0.6
+    specs 0.7
     https://github.com/mcandre/specs#readme
 
     gem list | grep multi_json
