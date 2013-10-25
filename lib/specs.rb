@@ -29,8 +29,8 @@
 require "getoptlong"
 require "pathname"
 
-SPECS_VERSION = "0.4"
-SPECS_VERSION_STRING = "specs #{SPECS_VERSION}"
+SPECS_VERSION_STRING = "specs #{Specs::VERSION}"
+
 SPECS_HOME_PAGE = "https://github.com/mcandre/specs#readme"
 
 SPECS_DIR = Pathname.new(File.dirname(__FILE__))

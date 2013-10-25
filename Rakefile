@@ -1,10 +1,8 @@
-require "./lib/specs"
-
 task :default => "test"
 
 task :gem => "specs.gemspec" do
   sh "gem build specs.gemspec"
-  sh "gem install ./specs-#{SPECS_VERSION}.gem"
+  sh "gem install ./specs-*.gem"
 end
 
 task :test => [:gem] do
@@ -12,7 +10,7 @@ task :test => [:gem] do
 end
 
 task :publish => [:gem] do
-  sh "gem push ./specs-#{SPECS_VERSION}.gem"
+  sh "gem push ./specs-*.gem"
 end
 
 task :lint => [] do
