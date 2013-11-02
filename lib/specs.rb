@@ -176,7 +176,7 @@ end
 
 # For a given spec, return the command line instruction(s)
 # that will get the spec's version information.
-def command(aspect)
+def self.command(aspect)
   # Ruby methods can't use hypens (-),
   # So translate to underscores (_)
   # When looking up known aspects.
