@@ -17,6 +17,8 @@ Gem::Specification.new { |s|
   s.files = Dir["lib/*.rb"] + Dir["lib/aspects/*.rb"] + ["LICENSE.md"]
   s.homepage = "https://github.com/mcandre/specs"
 
+  s.add_dependency "contracts"
+
   s.add_development_dependency "rake"
   s.add_development_dependency "reek"
   s.add_development_dependency "flay"

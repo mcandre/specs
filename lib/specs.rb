@@ -28,6 +28,8 @@
 
 require "getoptlong"
 require "pathname"
+require "contracts"
+include Contracts
 
 require "version"
 SPECS_VERSION_STRING = "specs #{Specs::VERSION}"
@@ -44,6 +46,7 @@ SPECS_DIR = Pathname.new(File.dirname(__FILE__))
 #       "firefox --version" in Unix
 #
 module Os
+  Contract nil => String
   def self.raw
     # Config deprecated in Ruby 1.9
     RbConfig::CONFIG["host_os"]
@@ -52,38 +55,47 @@ module Os
   # A series of OS descriptions.
   # Not all of these are mutually exclusive.
 
+  Contract nil => Bool
   def self.windows?
     self.raw =~ /cygwin|mswin|mingw|bccwin|wince|emx/
   end
 
+  Contract nil => Bool
   def self.mingw?
     self.raw =~ /cygwin|mingw/
   end
 
+  Contract nil => Bool
   def self.mac?
     self.raw =~ /darwin/
   end
 
+  Contract nil => Bool
   def self.unix?
     not self.windows?
   end
 
+  Contract nil => Bool
   def self.haiku?
     self.raw =~ /haiku/
   end
 
+  Contract nil => Bool
   def self.linux?
     self.unix? and not (self.mac? or self.haiku?)
   end
 
+  Contract nil => Bool
   def self.x86_64?
     RbConfig::CONFIG["arch"] =~ /64/
   end
 
+  Contract nil => Bool
   def self.x86?
     !self.x86_64?
   end
 
+  Contract nil => Symbol
   def self.os_name
     if self.windows?
       :windows
@@ -103,6 +115,7 @@ module Recipe
   module Package
   end
 
+  Contract nil => String
   def self.command_not_found
     # Windows but not MinGW
     if Os.windows? and !Os.mingw?
@@ -113,6 +126,7 @@ module Recipe
     end
   end
 
+  Contract nil => String
   def self.os
     case Os.os_name
     when :windows
@@ -126,38 +140,47 @@ module Recipe
     end
   end
 
+  Contract nil => String
   def self.arch
     "ruby -rrbconfig -e 'puts RbConfig::CONFIG[\"arch\"]'"
   end
 
+  Contract nil => String
   def self.specs
     SPECS_VERSION_STRING
   end
 
+  Contract nil => String
   def self.ruby_v
     RUBY_VERSION
   end
 
+  Contract nil => Bool
   def self.ruby1_8?
     RUBY_VERSION =~ /^1\.8/
   end
 
+  Contract nil => Bool
   def self.ruby1_9?
     RUBY_VERSION =~ /^1\.9/
   end
 
+  Contract nil => Bool
   def self.ruby2?
     RUBY_VERSION =~ /^2/
   end
 
+  Contract nil => String
   def self.rubygems
     "gem --version"
   end
 
+  Contract nil => String
   def self.rb
     "ruby --version"
   end
 
+  Contract nil => ArrayOf[String]
   def self.ruby
     [rubygems, rb]
   end
@@ -176,6 +199,7 @@ end
 
 # For a given spec, return the command line instruction(s)
 # that will get the spec's version information.
+Contract String => String
 def self.command(aspect)
   # Ruby methods can't use hypens (-),
   # So translate to underscores (_)
@@ -202,6 +226,7 @@ end
 
 # Print a command line instruction and its output,
 # Emulating a user manually entering the instruction.
+Contract String, String => nil
 def run(cmd, aspect)
   # Newline to visually separate multiple aspect commands.
   puts ""
@@ -224,6 +249,7 @@ def run(cmd, aspect)
   end
 end
 
+Contract nil => nil
 def check_ruby_version
   if Recipe.ruby1_8?
     puts "Requires Ruby 1.9 or higher."
@@ -232,6 +258,7 @@ def check_ruby_version
   end
 end
 
+Contract nil => nil
 def usage
   puts "Specs:\n\n#{SPECS_VERSION_STRING}\n#{SPECS_HOME_PAGE}"
 

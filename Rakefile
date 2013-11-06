@@ -5,7 +5,7 @@ task :gem => "specs.gemspec" do
   sh "gem install ./specs-*.gem"
 end
 
-task :test => [:gem] do
+task :test => [:clean, :gem] do
   sh "specs ruby os hardware"
 end
 
@@ -19,5 +19,8 @@ task :lint => [] do
 end
 
 task :clean => [] do
-  sh "rm *.gem"
+  begin
+    sh "rm *.gem"
+  rescue
+  end
 end
