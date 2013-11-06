@@ -1,12 +1,12 @@
 guard :shell do
-  watch(/.+\.gemspec/) do |m|
+  watch("Gemfile") do |m|
     title = "Bundler output"
-    msg = "Failure"
+    msg = "Bundler Failure"
     status = :failed
 
     if system("bundle")
       msg = "Bundled"
-      status = :success
+      status = :status
     end
 
     n msg, title, status
@@ -14,15 +14,12 @@ guard :shell do
     "-> #{msg}"
   end
 
-  watch(/.+\.rb/) do |m|
-    title = "Rake output"
-    msg = "Failure"
-    status = :failed
+  watch(/Rakefile|(.*\.rb)/) do |m|
+    title = "Lint output"
+    msg = "Lint failure"
+    status = :success
 
-    if system("rake")
-      msg = "Tested"
-      status = :success
-    end
+    msg = `rake lint`
 
     n msg, title, status
 
