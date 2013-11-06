@@ -22,6 +22,7 @@ Gem::Specification.new { |s|
   s.add_development_dependency "rake"
   s.add_development_dependency "reek"
   s.add_development_dependency "flay"
+  s.add_development_dependency "flog"
   s.add_development_dependency "guard"
   s.add_development_dependency "guard-shell"
 }
