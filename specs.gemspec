@@ -24,6 +24,7 @@ Gem::Specification.new { |s|
   s.add_development_dependency "flay"
   s.add_development_dependency "flog"
   s.add_development_dependency "roodi"
+  s.add_development_dependency "churn"
   s.add_development_dependency "guard"
   s.add_development_dependency "guard-shell"
 }
