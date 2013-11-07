@@ -26,6 +26,7 @@ Gem::Specification.new { |s|
   s.add_development_dependency "roodi"
   s.add_development_dependency "churn"
   s.add_development_dependency "cane"
+  s.add_development_dependency "excellent"
   s.add_development_dependency "guard"
   s.add_development_dependency "guard-shell"
 }

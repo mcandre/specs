@@ -29,7 +29,11 @@ task :cane => [] do
   sh "bundle exec cane -f *.rb; bundle exec cane **/*.rb"
 end
 
-task :lint => [:reek, :flay, :roodi] do
+task :excellent => [] do
+  sh "bundle exec excellent ."
+end
+
+task :lint => [:reek, :flay, :roodi, :cane, :excellent] do
 end
 
 task :flog => [] do
@@ -43,6 +47,11 @@ end
 task :clean => [] do
   begin
     sh "rm *.gem"
+  rescue
+  end
+
+  begin
+    sh "rm -rf tmp"
   rescue
   end
 end

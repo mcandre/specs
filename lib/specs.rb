@@ -137,6 +137,9 @@ module Recipe
       "lsb_release -a"
     when :unix
       "uname -a"
+    # Punt.
+    else
+      "echo $OS"
     end
   end
 
