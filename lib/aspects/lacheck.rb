@@ -1,5 +1,5 @@
 module Recipe
   def self.lacheck
-    "lacheck"
+    "lacheck | grep lacheck.lex"
   end
 end

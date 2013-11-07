@@ -199,7 +199,6 @@ end
 
 # For a given spec, return the command line instruction(s)
 # that will get the spec's version information.
-Contract String => String
 def self.command(aspect)
   # Ruby methods can't use hypens (-),
   # So translate to underscores (_)
@@ -226,8 +225,7 @@ end
 
 # Print a command line instruction and its output,
 # Emulating a user manually entering the instruction.
-Contract String, String => nil
-def run(cmd, aspect)
+def self.run(cmd, aspect)
   # Newline to visually separate multiple aspect commands.
   puts ""
 
@@ -249,8 +247,7 @@ def run(cmd, aspect)
   end
 end
 
-Contract nil => nil
-def check_ruby_version
+def self.check_ruby_version
   if Recipe.ruby1_8?
     puts "Requires Ruby 1.9 or higher."
     puts "http://www.ruby-lang.org/"
@@ -258,8 +255,7 @@ def check_ruby_version
   end
 end
 
-Contract nil => nil
-def usage
+def self.usage
   puts "Specs:\n\n#{SPECS_VERSION_STRING}\n#{SPECS_HOME_PAGE}"
 
   exit if ARGV.include?("--version")
@@ -287,7 +283,9 @@ def main
       run(cmds, aspect)
       # Module returns an array of command strings.
     elsif cmds.instance_of?(Array)
-      cmds.each { |cmd| run(cmd, aspect) }
+      cmds.each { |cmd|
+        run(cmd, aspect)
+      }
     end
   }
 end
