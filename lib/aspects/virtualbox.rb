@@ -10,7 +10,7 @@ module Recipe
     when :mac
       "/Applications/Firefox.app/Contents/MacOS/firefox --version"
     else
-      "firefox --version"      
+      "firefox --version"
     end
   end
 end

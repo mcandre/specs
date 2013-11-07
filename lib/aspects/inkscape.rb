@@ -10,7 +10,7 @@ module Recipe
     when :mac
       "/Applications/Inkscape.app/Contents/Resources/bin/inkscape --version"
     else
-      "inkscape --version"      
+      "inkscape --version"
     end
   end
 end
