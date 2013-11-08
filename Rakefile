@@ -37,7 +37,11 @@ task :rubocop => [] do
   sh "bundle exec rubocop"
 end
 
-task :lint => [:reek, :flay, :roodi, :cane, :excellent, :rubocop] do
+task :tailor => [] do
+  sh "bundle exec tailor"
+end
+
+task :lint => [:reek, :flay, :roodi, :cane, :excellent, :rubocop, :tailor] do
 end
 
 task :flog => [] do
