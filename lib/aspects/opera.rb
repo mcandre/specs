@@ -1,14 +1,14 @@
 module Recipe
   def self.opera
     # Assumes opera in PATH.
-    if Os.unix? and not Os.mac?
-      "opera -version"
+    if Os.unix? && !Os.mac?
+      'opera -version'
       # Opera for Mac/Windows does not support the -version command line option.
       # # Assumes Opera is installed in the default directory.
       # elsif Os.mac?
-      #       "/Applications/Opera.app/Contents/MacOS/Opera -version"
+      #       '/Applications/Opera.app/Contents/MacOS/Opera -version'
       # elsif Os.windows?
-      #       "C:\\Program Files (x86)\\Opera\\opera -version"
+      #       'C:\\Program Files (x86)\\Opera\\opera -version'
     end
   end
 end

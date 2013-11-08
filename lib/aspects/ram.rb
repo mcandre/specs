@@ -1,11 +1,11 @@
 module Recipe
   def self.ram
     if Os.windows?
-      "systeminfo | findstr /C:\"Total Physical Memory\""
+      'systeminfo | findstr /C:\"Total Physical Memory\"'
     elsif Os.mac?
-      "system_profiler | grep 'Memory:'"
+      'system_profiler | grep \'Memory:\''
     else
-      "grep MemTotal /proc/meminfo"
+      'grep MemTotal /proc/meminfo'
     end
   end
 end

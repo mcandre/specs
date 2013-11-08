@@ -1,10 +1,10 @@
 #!/bin/env ruby
 
-require "rubygems"
-require "specs"
+require 'rubygems'
+require 'specs'
 
 begin
   main
-rescue Interrupt => e
+rescue Interrupt
   nil
 end

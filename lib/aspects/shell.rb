@@ -1,9 +1,9 @@
 module Recipe
   def self.shell
     if Os.windows?
-      "echo %cmdextversion%"
+      'echo %cmdextversion%'
     elsif Os.unix?
-      "sh --version"
+      'sh --version'
     end
   end
 end

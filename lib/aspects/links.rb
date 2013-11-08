@@ -1,5 +1,5 @@
 module Recipe
   def self.links
-    "links -version"
+    'links -version'
   end
 end

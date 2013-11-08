@@ -26,30 +26,30 @@
 # --version, -v:
 #    print specs' own version
 
-require "getoptlong"
-require "pathname"
-require "contracts"
+require 'getoptlong'
+require 'pathname'
+require 'contracts'
 include Contracts
 
-require "version"
+require 'version'
 SPECS_VERSION_STRING = "specs #{Specs::VERSION}"
 
-SPECS_HOME_PAGE = "https://github.com/mcandre/specs#readme"
+SPECS_HOME_PAGE = 'https://github.com/mcandre/specs#readme'
 
 SPECS_DIR = Pathname.new(File.dirname(__FILE__))
 
 # Get the basic operating system name reliably, even in JRuby
 # Useful for OS-contextual command line instructions.
 #
-# E.g., "C:\Program Files (x86)\Mozilla Firefox\firefox --version" in Windows vs
-#       "/Applications/Firefox.app/Contents/MacOS/firefox --version" in Mac vs
-#       "firefox --version" in Unix
+# E.g., 'C:\Program Files (x86)\Mozilla Firefox\firefox --version' in Windows vs
+#       '/Applications/Firefox.app/Contents/MacOS/firefox --version' in Mac vs
+#       'firefox --version' in Unix
 #
 module Os
   Contract nil => String
   def self.raw
     # Config deprecated in Ruby 1.9
-    RbConfig::CONFIG["host_os"]
+    RbConfig::CONFIG['host_os']
   end
 
   # A series of OS descriptions.
@@ -57,37 +57,37 @@ module Os
 
   Contract nil => Bool
   def self.windows?
-    self.raw =~ /cygwin|mswin|mingw|bccwin|wince|emx/
+    raw =~ /cygwin|mswin|mingw|bccwin|wince|emx/
   end
 
   Contract nil => Bool
   def self.mingw?
-    self.raw =~ /cygwin|mingw/
+    raw =~ /cygwin|mingw/
   end
 
   Contract nil => Bool
   def self.mac?
-    self.raw =~ /darwin/
+    raw =~ /darwin/
   end
 
   Contract nil => Bool
   def self.unix?
-    not self.windows?
+    !self.windows?
   end
 
   Contract nil => Bool
   def self.haiku?
-    self.raw =~ /haiku/
+    raw =~ /haiku/
   end
 
   Contract nil => Bool
   def self.linux?
-    self.unix? and not (self.mac? or self.haiku?)
+    self.unix? && !(self.mac? || self.haiku?)
   end
 
   Contract nil => Bool
   def self.x86_64?
-    RbConfig::CONFIG["arch"] =~ /64/
+    RbConfig::CONFIG['arch'] =~ /64/
   end
 
   Contract nil => Bool
@@ -111,18 +111,24 @@ module Os
   end
 end
 
+#
+# Recipe
+#
 module Recipe
+  #
+  # Package
+  #
   module Package
   end
 
   Contract nil => String
   def self.command_not_found
     # Windows but not MinGW
-    if Os.windows? and !Os.mingw?
-      "not recognized as an internal or external command"
+    if Os.windows? && !Os.mingw?
+      'not recognized as an internal or external command'
       # MinGW or other Unix variant.
     else
-      "command not found"
+      'command not found'
     end
   end
 
@@ -130,22 +136,22 @@ module Recipe
   def self.os
     case Os.os_name
     when :windows
-      "systeminfo | findstr /B /C:\"OS Name\" /C:\"OS Version\""
+      'systeminfo | findstr /B /C:\"OS Name\" /C:\"OS Version\"'
     when :mac
-        "system_profiler SPSoftwareDataType | grep 'System Version'"
+      'system_profiler SPSoftwareDataType | grep \'System Version\''
     when :linux
-      "lsb_release -a"
+      'lsb_release -a'
     when :unix
-      "uname -a"
+      'uname -a'
     # Punt.
     else
-      "echo $OS"
+      'echo $OS'
     end
   end
 
   Contract nil => String
   def self.arch
-    "ruby -rrbconfig -e 'puts RbConfig::CONFIG[\"arch\"]'"
+    'ruby -rrbconfig -e \'puts RbConfig::CONFIG[\'arch\']\''
   end
 
   Contract nil => String
@@ -175,12 +181,12 @@ module Recipe
 
   Contract nil => String
   def self.rubygems
-    "gem --version"
+    'gem --version'
   end
 
   Contract nil => String
   def self.rb
-    "ruby --version"
+    'ruby --version'
   end
 
   Contract nil => ArrayOf[String]
@@ -189,12 +195,12 @@ module Recipe
   end
 end
 
-BUILTINS = ["specs", "os", "arch", "ruby"]
+BUILTINS = %w(specs, os, arch, ruby)
 
 SEP = File::SEPARATOR
 
 # .../specs/aspects
-RECIPE_DIR = [SPECS_DIR, "aspects"].join(SEP)
+RECIPE_DIR = [SPECS_DIR, 'aspects'].join(SEP)
 
 Dir[File.join(RECIPE_DIR, '**', '*.rb')].each do |file|
   require File.expand_path(file)
@@ -206,16 +212,14 @@ def self.command(aspect)
   # Ruby methods can't use hypens (-),
   # So translate to underscores (_)
   # When looking up known aspects.
-  method = aspect.gsub("-", "_").to_sym
+  method = aspect.gsub('-', '_').to_sym
 
   # Package?
-  if aspect.include?(":")
-    package_manager, package = aspect.split(":")
+  if aspect.include?(':')
+    package_manager, package = aspect.split(':')
     package_manager = package_manager.to_sym
 
-    if Recipe::Package.methods.include?(package_manager)
-      Recipe::Package.send(package_manager, package)
-    end
+    Recipe::Package.send(package_manager, package) if Recipe::Package.methods.include?(package_manager)
   # Known aspect?
   elsif Recipe.methods.include?(method)
     Recipe.send(method)
@@ -230,12 +234,12 @@ end
 # Emulating a user manually entering the instruction.
 def self.run(cmd, aspect)
   # Newline to visually separate multiple aspect commands.
-  puts ""
+  puts ''
 
   if !cmd
     puts "#{aspect} aspect not implemented for this system"
   elsif cmd == SPECS_VERSION_STRING
-    puts "specs --version"
+    puts 'specs --version'
     puts SPECS_VERSION_STRING
   else
     puts cmd
@@ -252,8 +256,8 @@ end
 
 def self.check_ruby_version
   if Recipe.ruby1_8?
-    puts "Requires Ruby 1.9 or higher."
-    puts "http://www.ruby-lang.org/"
+    puts 'Requires Ruby 1.9 or higher.'
+    puts 'http://www.ruby-lang.org/'
     exit
   end
 end
@@ -261,7 +265,7 @@ end
 def self.usage
   puts "Specs:\n\n#{SPECS_VERSION_STRING}\n#{SPECS_HOME_PAGE}"
 
-  exit if ARGV.include?("--version")
+  exit if ARGV.include?('--version')
 end
 
 def main
@@ -270,25 +274,22 @@ def main
   usage
 
   # Default aspects
-  aspects = ["os", "hardware"]
-  if !ARGV.empty?
-    aspects = ARGV
-  end
+  aspects = %w(os, hardware)
 
-  aspects = aspects - ["specs"]
+  aspects = ARGV unless ARGV.empty?
 
-  aspects.each { |aspect|
+  aspects = aspects - ['specs']
+
+  aspects.each do |aspect|
     # What does the aspect module say to run
     # in order to retrieve the aspect information?
     cmds = command(aspect)
 
-    if !cmds or cmds.instance_of?(String)
+    if !cmds || cmds.instance_of?(String)
       run(cmds, aspect)
       # Module returns an array of command strings.
     elsif cmds.instance_of?(Array)
-      cmds.each { |cmd|
-        run(cmd, aspect)
-      }
+      cmds.each { |cmd| run(cmd, aspect) }
     end
-  }
+  end
 end

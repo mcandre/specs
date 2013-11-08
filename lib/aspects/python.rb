@@ -1,10 +1,10 @@
 module Recipe
   def self.pip
-    "pip --version"
+    'pip --version'
   end
 
   def self.py
-    "python --version"
+    'python --version'
   end
 
   def self.python

@@ -6,15 +6,15 @@ module Recipe
   end
 
   def self.bundler
-    "bundle --version"
+    'bundle --version'
   end
 
   def self.rubygems
-    "gem --version"
+    'gem --version'
   end
 
   def self.rb
-    "ruby --version"
+    'ruby --version'
   end
 
   def self.ruby

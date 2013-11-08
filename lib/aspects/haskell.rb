@@ -6,22 +6,18 @@ module Recipe
   end
 
   def self.cabal
-    "cabal --version"
+    'cabal --version'
   end
 
   def self.ghc
-    "ghc --version"
+    'ghc --version'
   end
 
   def self.haskellplatform
-    "ghc-pkg field haskell-platform version"
+    'ghc-pkg field haskell-platform version'
   end
 
   def self.haskell
-    [
-     cabal,
-     ghc,
-     haskellplatform
-    ]
+    [cabal, ghc, haskellplatform]
   end
 end

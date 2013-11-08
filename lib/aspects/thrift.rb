@@ -1,5 +1,5 @@
 module Recipe
   def self.thrift
-    "thrift -version"
+    'thrift -version'
   end
 end

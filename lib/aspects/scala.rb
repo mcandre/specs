@@ -1,10 +1,10 @@
 module Recipe
   def self.scalac
-    "scalac -version"
+    'scalac -version'
   end
 
   def self.sbt
-    "sbt sbt-version"
+    'sbt sbt-version'
   end
 
   def self.scala

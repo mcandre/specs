@@ -1,5 +1,5 @@
 module Recipe
   def self.lua
-    "lua -v"
+    'lua -v'
   end
 end

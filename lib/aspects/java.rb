@@ -1,30 +1,30 @@
 module Recipe
   def self.mvn
-    "mvn --version"
+    'mvn --version'
   end
 
   def self.classpath
-    if Os.windows? and not Os.mingw?
-      "echo %CLASSPATH"
+    if Os.windows? && !Os.mingw?
+      'echo %CLASSPATH'
     else
-      "echo $CLASSPATH"
+      'echo $CLASSPATH'
     end
   end
 
   def self.javahome
-    if Os.windows? and not Os.mingw?
-      "echo %JAVA_HOME%"
+    if Os.windows? && !Os.mingw?
+      'echo %JAVA_HOME%'
     else
-      "echo $JAVA_HOME"
+      'echo $JAVA_HOME'
     end
   end
 
   def self.oak
-    "java -version"
+    'java -version'
   end
 
   def self.oakc
-    "javac -version"
+    'javac -version'
   end
 
   def self.java

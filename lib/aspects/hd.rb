@@ -1,9 +1,9 @@
 module Recipe
   def self.hd
     if Os.windows?
-      "fsutil fsinfo drives"
+      'fsutil fsinfo drives'
     else
-      "df -h"
+      'df -h'
     end
   end
 end

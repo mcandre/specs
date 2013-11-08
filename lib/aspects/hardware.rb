@@ -5,15 +5,15 @@ module Recipe
   def self.hardware
     # Use environment variable.
     if Os.windows?
-      "systeminfo | findstr /B /C:\"System Manufacturer\" /C:\"System Model\""
+      'systeminfo | findstr /B /C:\"System Manufacturer\" /C:\"System Model\"'
       # Produces a noticeable delay.
     elsif Os.mac?
-      "system_profiler | grep 'Model Identifier'"
+      'system_profiler | grep \'Model Identifier\''
       # Assume:
       # * OS is a Unix variant.
       # * dmidecode is installed.
     else
-      "sudo dmidecode -t system | grep Manufacturer|Product"
+      'sudo dmidecode -t system | grep Manufacturer|Product'
     end
   end
 end

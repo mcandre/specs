@@ -3,14 +3,14 @@ module Recipe
     case Os.os_name
     when :windows
       if Os.x86_64?
-        "C:\\Program Files (x86)\\Inkscape\\inkscape --version"
+        'C:\\Program Files (x86)\\Inkscape\\inkscape --version'
       else
-        "\"C:\\Program Files\\Inkscape\\inkscape\" --version"
+        '\"C:\\Program Files\\Inkscape\\inkscape\" --version'
       end
     when :mac
-      "/Applications/Inkscape.app/Contents/Resources/bin/inkscape --version"
+      '/Applications/Inkscape.app/Contents/Resources/bin/inkscape --version'
     else
-      "inkscape --version"
+      'inkscape --version'
     end
   end
 end

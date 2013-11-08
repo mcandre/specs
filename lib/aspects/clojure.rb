@@ -1,10 +1,10 @@
 module Recipe
   def self.lein
-    "lein --version"
+    'lein --version'
   end
 
   def self.clj
-    "lein exec -e '(println \"Clojure \" (clojure-version))'"
+    'lein exec -e \'(println \"Clojure \" (clojure-version))\''
   end
 
   def self.clojure

@@ -1,5 +1,5 @@
 module Recipe
   def self.dmake
-    "dmake -V"
+    'dmake -V'
   end
 end

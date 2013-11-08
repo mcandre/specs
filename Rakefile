@@ -33,7 +33,11 @@ task :excellent => [] do
   sh "bundle exec excellent ."
 end
 
-task :lint => [:reek, :flay, :roodi, :cane, :excellent] do
+task :rubocop => [] do
+  sh "bundle exec rubocop"
+end
+
+task :lint => [:reek, :flay, :roodi, :cane, :excellent, :rubocop] do
 end
 
 task :flog => [] do

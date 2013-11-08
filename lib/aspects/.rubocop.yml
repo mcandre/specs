@@ -1,0 +1,10 @@
+inherit_from: ../../.rubocop.yml
+
+Documentation:
+  Enabled: false
+
+LineLength:
+  Max: 200
+
+IfUnlessModifier:
+  Enabled: false

@@ -6,11 +6,11 @@ module Recipe
   end
 
   def self.npm_tool
-    "npm --version"
+    'npm --version'
   end
 
   def self.js
-    "node --version"
+    'node --version'
   end
 
   def self.node

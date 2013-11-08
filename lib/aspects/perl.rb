@@ -1,10 +1,10 @@
 module Recipe
   def self.cpan
-    "cpan --version"
+    'cpan --version'
   end
 
   def self.pl
-    "perl --version"
+    'perl --version'
   end
 
   def self.perl

@@ -1,5 +1,5 @@
 module Recipe
   def self.ssh
-    "ssh -V"
+    'ssh -V'
   end
 end

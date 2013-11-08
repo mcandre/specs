@@ -1,5 +1,5 @@
 module Recipe
   def self.ocaml
-    "ocaml -version"
+    'ocaml -version'
   end
 end

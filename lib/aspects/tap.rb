@@ -1,5 +1,5 @@
 module Recipe
   def self.tap
-    "tap --version"
+    'tap --version'
   end
 end
