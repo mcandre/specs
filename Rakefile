@@ -13,6 +13,17 @@ task :publish => [:clean, :gem] do
   sh 'gem push ./specs-*.gem'
 end
 
+task :ruby => [] do
+  begin
+    sh 'for f in *.rb; do ruby -wc $f | grep -v "Syntax OK"; done'
+  rescue
+  end
+  begin
+    sh 'for f in **/*.rb; do ruby -wc $f | grep -v "Syntax OK"; done'
+  rescue
+  end
+end
+
 task :reek => [] do
   sh 'bundle exec reek -q .; true'
 end
@@ -41,7 +52,7 @@ task :tailor => [] do
   sh 'bundle exec tailor'
 end
 
-task :lint => [:reek, :flay, :roodi, :cane, :excellent, :rubocop, :tailor] do
+task :lint => [:ruby, :reek, :flay, :roodi, :cane, :excellent, :rubocop, :tailor] do
 end
 
 task :flog => [] do
