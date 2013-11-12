@@ -2,10 +2,13 @@ task :default => 'test'
 
 task :gem => 'specs.gemspec' do
   sh 'gem build specs.gemspec'
+end
+
+task :install => [:gem] do
   sh 'gem install ./specs-*.gem'
 end
 
-task :test => [:clean, :gem] do
+task :test => [:clean, :install] do
   sh 'specs ruby os hardware'
 end
 
