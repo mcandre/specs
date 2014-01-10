@@ -8,4 +8,14 @@ FeatureEnvy:
 BooleanParameter:
   enabled: false
 TooManyStatements:
-  max_statements: 10
+  max_statements: 30
+LongParameterList:
+  max_params: 5
+UncommunicativeParameterName:
+  enabled: false
+UncommunicativeMethodName:
+  enabled: false
+UncommunicativeModuleName:
+  enabled: false
+ControlParameter:
+  enabled: false
