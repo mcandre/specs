@@ -1,11 +1,11 @@
 task :default => 'test'
 
 task :gem => 'specs.gemspec' do
-  sh 'gem build specs.gemspec'
+  sh 'gem build *.gemspec'
 end
 
 task :install => [:gem] do
-  sh 'gem install ./specs-*.gem'
+  sh 'gem install ./*.gem'
 end
 
 task :test => [:clean, :install] do
@@ -13,7 +13,7 @@ task :test => [:clean, :install] do
 end
 
 task :publish => [:clean, :gem] do
-  sh 'gem push ./specs-*.gem'
+  sh 'gem push ./*.gem'
 end
 
 task :ruby => [] do
