@@ -8,6 +8,6 @@ module Recipe
   end
 
   def self.scala
-    [sbt, scalac, java]
+    [sbt, scalac]
   end
 end
