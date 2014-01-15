@@ -29,7 +29,8 @@ Gem::Specification.new { |s|
   s.add_development_dependency 'excellent'
   s.add_development_dependency 'rubocop'
   s.add_development_dependency 'tailor'
-  s.add_development_dependency 'cucumber'
   s.add_development_dependency 'guard'
   s.add_development_dependency 'guard-shell'
+  s.add_development_dependency 'rspec'
+  s.add_development_dependency 'cucumber'
 }
