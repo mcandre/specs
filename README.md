@@ -67,6 +67,32 @@ Checkout a copy of the code, and get the developer dependencies:
     $ cd specs
     $ bundle
 
+## Testing
+
+Ensure the example script works as expected:
+
+    $ bundle
+    $ cucumber
+    Feature: Get versions
+
+      Scenario: Running specs                                  # features/get_versions.feature:3
+        Given "specs ruby"                                     # features/step_definitions/steps.rb:1
+        Then the output has "ruby --version"                   # features/step_definitions/steps.rb:5
+        Given "specs ruby"                                     # features/step_definitions/steps.rb:1
+        Then the output has "gem --version"                    # features/step_definitions/steps.rb:5
+        Given "specs ruby"                                     # features/step_definitions/steps.rb:1
+        Then the output has "bundle --version"                 # features/step_definitions/steps.rb:5
+        Given "specs rake"                                     # features/step_definitions/steps.rb:1
+        Then the output has "rake --version"                   # features/step_definitions/steps.rb:5
+        Given "specs --version"                                # features/step_definitions/steps.rb:1
+        Then the output has "https://github.com/mcandre/specs" # features/step_definitions/steps.rb:5
+        Given "specs gem:specs"                                # features/step_definitions/steps.rb:1
+        Then the output has "specs"                            # features/step_definitions/steps.rb:5
+
+    1 scenario (1 passed)
+    12 steps (12 passed)
+    0m4.136s
+
 ## Linting
 
 Keep the code looking good with the linter tools:
