@@ -3,7 +3,7 @@ module Recipe
     case Os.os_name
     when :windows
       if Os.x86?
-        '\"C:\\Program Files\\Oracle\\VirtualBox\\VBoxManage\" --version'
+        '"C:\\Program Files\\Oracle\\VirtualBox\\VBoxManage" --version'
       else
         'C:\\Program Files (x86)\\Oracle\\VirtualBox\\VBoxManage --version'
       end

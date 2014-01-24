@@ -136,7 +136,7 @@ module Recipe
   def self.os
     case Os.os_name
     when :windows
-      'systeminfo | findstr /B /C:\"OS Name\" /C:\"OS Version\"'
+      'systeminfo | findstr /B /C:"OS Name" /C:"OS Version"'
     when :mac
       'system_profiler SPSoftwareDataType | grep \'System Version\''
     when :linux
