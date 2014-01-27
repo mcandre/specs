@@ -195,7 +195,7 @@ module Recipe
   end
 end
 
-BUILTINS = %w(specs, os, arch, ruby)
+BUILTINS = %w(specs os arch ruby)
 
 SEP = File::SEPARATOR
 
@@ -274,7 +274,7 @@ def main
   usage
 
   # Default aspects
-  aspects = %w(os, hardware)
+  aspects = %w(os hardware)
 
   aspects = ARGV unless ARGV.empty?
 
