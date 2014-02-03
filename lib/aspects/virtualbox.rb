@@ -8,9 +8,9 @@ module Recipe
         'C:\\Program Files (x86)\\Oracle\\VirtualBox\\VBoxManage --version'
       end
     when :mac
-      '/Applications/Firefox.app/Contents/MacOS/firefox --version'
+      'vboxwebsrv --help 2>&1 | grep VirtualBox'
     else
-      'firefox --version'
+      'vboxwebsrv --help 2>&1 | grep VirtualBox'
     end
   end
 end
