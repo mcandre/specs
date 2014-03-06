@@ -209,7 +209,7 @@ end
 # For a given spec, return the command line instruction(s)
 # that will get the spec's version information.
 def self.command(aspect)
-  # Ruby methods can't use hypens (-),
+  # Ruby methods can't use hyphens (-),
   # So translate to underscores (_)
   # When looking up known aspects.
   method = aspect.gsub('-', '_').to_sym
