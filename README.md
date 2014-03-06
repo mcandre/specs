@@ -67,7 +67,7 @@ Checkout a copy of the code, and get the developer dependencies:
     $ cd specs
     $ bundle
 
-## Testing
+## Test
 
 Ensure the example script works as expected:
 
@@ -93,8 +93,13 @@ Ensure the example script works as expected:
     12 steps (12 passed)
     0m4.136s
 
-## Linting
+## Lint
 
 Keep the code looking good with the linter tools:
 
     $ rake lint
+
+## Spell Check
+
+    $ aspelllint
+    ...
