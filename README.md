@@ -14,6 +14,8 @@ Bug tracking is much easier when everyone is on the same page for software and h
 
 `specs` is command line based, printing not only the stack info, but the commands used to obtain the info, so even users without specs installed can see how to get the same info on their computers.
 
+`specs` can find versions with `-v/--version` for programs that offer them, custom `aspects/` recipes for programs that don't, and `<pkg> list` for programs installed by package managers like [RubyGems](http://rubygems.org/), [NPM](https://www.npmjs.org/), [Homebrew](http://brew.sh/), and [Chocolatey](http://chocolatey.org/). It's as close as you can get to fully computerized versioning without forcing Vagrant on your users.
+
 # EXAMPLE
 
 You type this:
