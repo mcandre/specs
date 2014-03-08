@@ -10,7 +10,9 @@ https://rubygems.org/gems/specs
 
 # ABOUT
 
-Bug tracking is much easier when everyone is on the same page for which versions of software are being used. `specs` brings this information right to your fingertips.
+Bug tracking is much easier when everyone is on the same page for software and hardware stacks. `specs` brings this information right to your fingertips, so bug reporters can quickly identify, copy, and paste your stack info into reports.
+
+`specs` is command line based, printing not only the stack info, but the commands used to obtain the info, so even users without specs installed can see how to get the same info on their computers.
 
 # EXAMPLE
 
