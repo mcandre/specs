@@ -8,9 +8,11 @@ https://github.com/mcandre/specs
 
 https://rubygems.org/gems/specs
 
-# EXAMPLE
+# ABOUT
 
 Bug tracking is much easier when everyone is on the same page for which versions of software are being used. `specs` brings this information right to your fingertips.
+
+# EXAMPLE
 
 You type this:
 
