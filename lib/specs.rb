@@ -208,6 +208,7 @@ end
 
 # For a given spec, return the command line instruction(s)
 # that will get the spec's version information.
+Contract String => Any
 def self.command(aspect)
   # Ruby methods can't use hyphens (-),
   # So translate to underscores (_)
