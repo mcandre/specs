@@ -8,7 +8,7 @@ module Recipe
       'systeminfo | findstr /B /C:"System Manufacturer" /C:"System Model"'
       # Produces a noticeable delay.
     elsif Os.mac?
-      'system_profiler | grep \'Model Identifier\''
+      'system_profiler 2>&1 | grep \'Model Identifier\''
       # Assume:
       # * OS is a Unix variant.
       # * dmidecode is installed.
