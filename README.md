@@ -117,3 +117,7 @@ Keep the code looking good with the linter tools:
 
     $ aspelllint
     ...
+
+## Git Hooks
+
+See `hooks/`.
