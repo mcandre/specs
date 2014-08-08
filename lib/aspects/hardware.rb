@@ -13,7 +13,7 @@ module Recipe
       # * OS is a Unix variant.
       # * dmidecode is installed.
     else
-      'sudo dmidecode -t system | grep Manufacturer|Product'
+      'sudo dmidecode -t system | grep \'Manufacturer\\|Product\''
     end
   end
 end
