@@ -1,5 +1,9 @@
 module Recipe
   module Package
+    def self.bundle(package)
+      "bundle list #{package}"
+    end
+
     def self.gem(package)
       "gem list | grep #{package}"
     end
