@@ -3,5 +3,5 @@ Given(/^"([^"]*)"$/) do |command|
 end
 
 Then(/^the output has "([^"]*)"$/) do |text|
-  @cucumber.include?(text).should == true
+  expect(@cucumber).to include(text)
 end
