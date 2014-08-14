@@ -151,7 +151,7 @@ module Recipe
 
   Contract nil => String
   def self.arch
-    'ruby -rrbconfig -e \'puts RbConfig::CONFIG[\'arch\']\''
+    "ruby -rrbconfig -e \"puts RbConfig::CONFIG['arch']\""
   end
 
   Contract nil => String
