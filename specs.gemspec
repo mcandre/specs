@@ -34,4 +34,5 @@ Gem::Specification.new { |s|
   s.add_development_dependency 'rspec', '~> 3.0'
   s.add_development_dependency 'cucumber', '~> 1.3'
   s.add_development_dependency 'aspelllint', '~> 0.10'
+  s.add_development_dependency 'cowl', '~> 0.2'
 }

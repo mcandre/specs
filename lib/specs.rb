@@ -220,7 +220,9 @@ def self.command(aspect)
     package_manager, package = aspect.split(':')
     package_manager = package_manager.to_sym
 
-    Recipe::Package.send(package_manager, package) if Recipe::Package.methods.include?(package_manager)
+    if Recipe::Package.methods.include?(package_manager) then
+      Recipe::Package.send(package_manager, package)
+    end
   # Known aspect?
   elsif Recipe.methods.include?(method)
     Recipe.send(method)
