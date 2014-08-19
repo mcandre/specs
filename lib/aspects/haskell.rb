@@ -1,3 +1,5 @@
+require_relative 'apt'
+
 module Recipe
   module Package
     def self.cabal(package)
@@ -14,7 +16,11 @@ module Recipe
   end
 
   def self.haskellplatform
-    'ghc-pkg field haskell-platform version'
+    if Os.linux?
+      Package.apt('haskell-platform')
+    else
+      'ghc-pkg field haskell-platform version'
+    end
   end
 
   def self.haskell
