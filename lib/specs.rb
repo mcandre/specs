@@ -277,7 +277,7 @@ def main
   usage
 
   # Default aspects
-  aspects = %w(os hardware)
+  aspects = %w(os) # hardware)
 
   aspects = ARGV unless ARGV.empty?
 
