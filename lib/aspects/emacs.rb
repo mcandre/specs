@@ -1,7 +1,7 @@
 module Recipe
   module Package
     def self.cask(package)
-      "find ~/.emacs.d/.cask -name '*#{package}*' | head -n 1"
+      "find $HOME/.emacs.d/.cask -name '*#{package}*' | head -n 1"
     end
   end
 
