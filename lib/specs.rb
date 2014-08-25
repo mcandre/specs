@@ -220,7 +220,7 @@ def self.command(aspect)
     package_manager, package = aspect.split(':')
     package_manager = package_manager.to_sym
 
-    if Recipe::Package.methods.include?(package_manager) then
+    if Recipe::Package.methods.include?(package_manager)
       Recipe::Package.send(package_manager, package)
     end
   # Known aspect?
@@ -281,7 +281,7 @@ def main
 
   aspects = ARGV unless ARGV.empty?
 
-  aspects = aspects - ['specs']
+  aspects -= ['specs']
 
   aspects.each do |aspect|
     # What does the aspect module say to run
