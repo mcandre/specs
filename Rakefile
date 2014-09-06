@@ -55,7 +55,21 @@ task :cowl => [] do
   sh 'cowl .'
 end
 
-task :lint => [:ruby, :reek, :flay, :roodi, :cane, :excellent, :rubocop, :tailor, :cowl] do
+task :lili => [] do
+  sh 'bundle exec lili .'
+end
+
+task :lint => [
+  :ruby,
+  :reek,
+  :flay,
+  :roodi,
+  :cane,
+  :excellent,
+  :rubocop,
+  :tailor,
+  :cowl
+] do
 end
 
 task :flog => [] do
