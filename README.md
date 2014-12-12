@@ -71,7 +71,7 @@ multi_json (1.10.1, 1.8.4)
 
 # REQUIREMENTS
 
-* [Ruby](http://www.ruby-lang.org/) 1.9 or higher
+* [Ruby](http://www.ruby-lang.org/) 1.9+
 
 # INSTALL
 
