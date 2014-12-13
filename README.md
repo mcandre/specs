@@ -1,21 +1,5 @@
 # specs - Software version information at your fingertips
 
-# HOMEPAGE
-
-https://github.com/mcandre/specs
-
-# RUBYGEMS
-
-https://rubygems.org/gems/specs
-
-# ABOUT
-
-Bug tracking is much easier when everyone is on the same page for software and hardware stacks. `specs` brings this information right to your fingertips, so bug reporters can quickly identify, copy, and paste your stack info into reports.
-
-`specs` is command line based, printing not only the stack info, but the commands used to obtain the info, so even users without specs installed can see how to get the same info on their computers.
-
-`specs` can find versions with `-v/--version` flags for programs that support them, custom `aspects/` recipes for programs that don't, and `<pkg> list` for programs installed by package managers like [RubyGems](http://rubygems.org/), [NPM](https://www.npmjs.org/), [Homebrew](http://brew.sh/), and [Chocolatey](http://chocolatey.org/). It's as close as you can get to fully computerized versioning without forcing Vagrant on your users.
-
 # EXAMPLE
 
 You type this:
@@ -53,6 +37,22 @@ system_profiler 2>&1 | grep 'Model Identifier'
 ```
 
 You can copy & paste the output into bug trackers, forums, mailing lists, and live chat sessions. `specs` prints the command line instructions that obtain the version information, so that anyone, even non-`specs` users, can obtain the same information quickly and easily.
+
+# HOMEPAGE
+
+https://github.com/mcandre/specs
+
+# RUBYGEMS
+
+https://rubygems.org/gems/specs
+
+# ABOUT
+
+Bug tracking is much easier when everyone is on the same page for software and hardware stacks. `specs` brings this information right to your fingertips, so bug reporters can quickly identify, copy, and paste your stack info into reports.
+
+`specs` is command line based, printing not only the stack info, but the commands used to obtain the info, so even users without specs installed can see how to get the same info on their computers.
+
+`specs` can find versions with `-v/--version` flags for programs that support them, custom `aspects/` recipes for programs that don't, and `<pkg> list` for programs installed by package managers like [RubyGems](http://rubygems.org/), [NPM](https://www.npmjs.org/), [Homebrew](http://brew.sh/), and [Chocolatey](http://chocolatey.org/). It's as close as you can get to fully computerized versioning without forcing Vagrant on your users.
 
 # Package Versions
 
