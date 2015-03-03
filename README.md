@@ -18,7 +18,7 @@ specs 0.11
 https://github.com/mcandre/specs#readme
 
 /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --version 2>&1 | grep -v Unsure
- 36.0.1985.143 
+ 36.0.1985.143
 
 bundle --version
 Bundler version 1.7.1
