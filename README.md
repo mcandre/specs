@@ -14,7 +14,7 @@ Specs prints this:
 $ specs chrome ruby os hardware
 Specs:
 
-specs 0.11
+specs 0.13
 https://github.com/mcandre/specs#readme
 
 /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --version 2>&1 | grep -v Unsure
