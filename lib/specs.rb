@@ -281,7 +281,7 @@ def main
 
   aspects = ARGV unless ARGV.empty?
 
-  aspects -= ['specs']
+  aspects -= ['specs', '-v', 'version', '-version', '--version']
 
   aspects.each do |aspect|
     # What does the aspect module say to run
