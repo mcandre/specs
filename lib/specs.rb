@@ -140,7 +140,7 @@ module Recipe
     when :mac
       'system_profiler SPSoftwareDataType | grep \'System Version\''
     when :linux
-      'lsb_release -a'
+      'cat /etc/*release*'
     when :unix
       'uname -a'
     # Punt.
