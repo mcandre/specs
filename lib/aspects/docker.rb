@@ -11,7 +11,7 @@ module Recipe
     if Os.linux?
       [dockerv]
     else
-      [dockerv, boot2docker]
+      [dockerv, boot2docker, 'vagrant --version', virtualbox]
     end
   end
 end
