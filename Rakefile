@@ -86,14 +86,29 @@ task :churn => [] do
   sh 'bundle exec churn'
 end
 
-task :clean => [] do
+task :uninstall => [] do
+  begin
+    sh 'gem uninstall specs'
+  rescue
+  end
+end
+
+task :clean_gem => [] do
   begin
     sh 'rm *.gem'
   rescue
   end
+end
 
+task :clean_temp => [] do
   begin
     sh 'rm -rf tmp'
   rescue
   end
+end
+
+task :clean => [
+  :clean_gem,
+  :clean_temp
+] do
 end
