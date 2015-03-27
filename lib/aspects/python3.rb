@@ -1,4 +1,10 @@
 module Recipe
+  module Package
+    def self.pip3(package)
+      "pip3 list | grep #{package}"
+    end
+  end
+
   def self.pip3
     'pip3 --version'
   end
