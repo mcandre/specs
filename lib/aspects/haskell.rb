@@ -24,6 +24,10 @@ module Recipe
   end
 
   def self.haskell
-    [cabal, ghc, haskellplatform]
+    if Os.mac?
+      [cabal, ghc]
+    else
+      [cabal, ghc, haskellplatform]
+    end
   end
 end
