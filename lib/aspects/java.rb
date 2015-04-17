@@ -1,4 +1,8 @@
 module Recipe
+  def self.maven
+    mvn
+  end
+
   def self.mvn
     'mvn --version'
   end
