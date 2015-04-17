@@ -46,6 +46,8 @@ SPECS_DIR = Pathname.new(File.dirname(__FILE__))
 #       'firefox --version' in Unix
 #
 module Os
+  include Contracts::Modules
+
   Contract nil => String
   def self.raw
     # Config deprecated in Ruby 1.9
@@ -55,27 +57,27 @@ module Os
   # A series of OS descriptions.
   # Not all of these are mutually exclusive.
 
-  Contract nil => Bool
+  Contract nil => Or[Fixnum, nil]
   def self.windows?
     raw =~ /cygwin|mswin|mingw|bccwin|wince|emx/
   end
 
-  Contract nil => Bool
+  Contract nil => Or[Fixnum, nil]
   def self.mingw?
     raw =~ /cygwin|mingw/
   end
 
-  Contract nil => Bool
+  Contract nil => Or[Fixnum, nil]
   def self.mac?
     raw =~ /darwin/
   end
 
-  Contract nil => Bool
+  Contract nil => Or[Fixnum, nil]
   def self.unix?
     !self.windows?
   end
 
-  Contract nil => Bool
+  Contract nil => Or[Fixnum, nil]
   def self.haiku?
     raw =~ /haiku/
   end
@@ -85,7 +87,7 @@ module Os
     self.unix? && !(self.mac? || self.haiku?)
   end
 
-  Contract nil => Bool
+  Contract nil => Or[Fixnum, nil]
   def self.x86_64?
     RbConfig::CONFIG['arch'] =~ /64/
   end
@@ -115,10 +117,13 @@ end
 # Recipe
 #
 module Recipe
+  include Contracts::Modules
+
   #
   # Package
   #
   module Package
+    include Contracts::Modules
   end
 
   Contract nil => String
@@ -164,17 +169,17 @@ module Recipe
     RUBY_VERSION
   end
 
-  Contract nil => Bool
+  Contract nil => Or[Fixnum, nil]
   def self.ruby1_8?
     RUBY_VERSION =~ /^1\.8/
   end
 
-  Contract nil => Bool
+  Contract nil => Or[Fixnum, nil]
   def self.ruby1_9?
     RUBY_VERSION =~ /^1\.9/
   end
 
-  Contract nil => Bool
+  Contract nil => Or[Fixnum, nil]
   def self.ruby2?
     RUBY_VERSION =~ /^2/
   end
