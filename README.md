@@ -1,6 +1,6 @@
 # specs - Software version information at your fingertips
 
-# EXAMPLE
+# EXAMPLES
 
 You type this:
 
@@ -37,6 +37,51 @@ system_profiler 2>&1 | grep 'Model Identifier'
 ```
 
 You can copy & paste the output into bug trackers, forums, mailing lists, and live chat sessions. `specs` prints the command line instructions that obtain the version information, so that anyone, even non-`specs` users, can obtain the same information quickly and easily.
+
+## Aliases
+
+specs supports aliases:
+
+```
+)$ specs rspec ruby chruby
+Specs:
+
+specs 0.17
+https://github.com/mcandre/specs#readme
+
+rspec --version
+3.1.7
+
+bundle --version
+Bundler version 1.8.3
+
+gem --version
+2.4.6
+
+ruby --version
+ruby 2.0.0p598 (2014-11-13 revision 48408) [x86_64-darwin14.1.0]
+
+chruby --version
+chruby: 0.3.9
+
+$ specs coffee node nvm
+Specs:
+
+specs 0.17
+https://github.com/mcandre/specs#readme
+
+coffee --version
+CoffeeScript version 1.9.2
+
+npm --version
+2.7.5
+
+node --version
+v0.10.36
+
+nvm --version
+0.23.3
+```
 
 # HOMEPAGE
 
