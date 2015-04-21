@@ -28,10 +28,11 @@
 
 require 'getoptlong'
 require 'pathname'
+require 'system_with_aliases'
 require 'contracts'
 include Contracts
 
-require 'version'
+require_relative 'version'
 SPECS_VERSION_STRING = "specs #{Specs::VERSION}"
 
 SPECS_HOME_PAGE = 'https://github.com/mcandre/specs#readme'
@@ -252,7 +253,7 @@ def self.run(cmd, aspect)
   else
     puts cmd
 
-    output = `#{cmd} 2>&1`
+    output = SystemWithAliases::execute(cmd)
 
     if output.include?(Recipe.command_not_found)
       puts "#{cmd.split.first} not found"
