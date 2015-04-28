@@ -73,7 +73,7 @@ module Os
     raw =~ /darwin/
   end
 
-  Contract nil => Or[Fixnum, nil]
+  Contract nil => Bool
   def self.unix?
     !self.windows?
   end
