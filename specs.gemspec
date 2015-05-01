@@ -7,7 +7,6 @@ Gem::Specification.new { |s|
   s.license = 'FreeBSD'
 
   s.version = Specs::VERSION
-  s.date = '2013-03-23'
 
   s.authors = ['Andrew Pennebaker']
   s.email = 'andrew.pennebaker@gmail.com'
