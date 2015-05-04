@@ -1,4 +1,3 @@
-#!/usr/bin/env ruby
 #
 # Author:: Andrew Pennebaker
 #
@@ -8,16 +7,6 @@
 #
 # specs - Get system specs easily
 #
-# == Usage
-#
-# specs [aspects]
-#
-# Example:
-#
-# specs ruby os hardware
-#
-# By default, aspects are os and hardware.
-#
 # If an aspect is not installed, its output may be omitted.
 #
 # --help, -h:
@@ -26,18 +15,14 @@
 # --version, -v:
 #    print specs' own version
 
-require 'getoptlong'
 require 'pathname'
 require 'system_with_aliases'
 require 'contracts'
 include Contracts
 
 require_relative 'version'
-SPECS_VERSION_STRING = "specs #{Specs::VERSION}"
 
-SPECS_HOME_PAGE = 'https://github.com/mcandre/specs#readme'
-
-SPECS_DIR = Pathname.new(File.dirname(__FILE__))
+require_relative 'cli'
 
 # Get the basic operating system name reliably, even in JRuby
 # Useful for OS-contextual command line instructions.
@@ -201,104 +186,82 @@ module Recipe
   end
 end
 
-BUILTINS = %w(specs os arch ruby)
+module Specs
+  include Contracts::Modules
 
-SEP = File::SEPARATOR
+  SPECS_VERSION_STRING = "specs #{Specs::VERSION}"
 
-# .../specs/aspects
-RECIPE_DIR = [SPECS_DIR, 'aspects'].join(SEP)
+  SPECS_HOME_PAGE = 'https://github.com/mcandre/specs#readme'
 
-Dir[File.join(RECIPE_DIR, '**', '*.rb')].each do |file|
-  require File.expand_path(file)
-end
+  SPECS_DIR = Pathname.new(File.dirname(__FILE__))
 
-# For a given spec, return the command line instruction(s)
-# that will get the spec's version information.
-Contract String => Any
-def self.command(aspect)
-  # Ruby methods can't use hyphens (-),
-  # So translate to underscores (_)
-  # When looking up known aspects.
-  method = aspect.gsub('-', '_').to_sym
+  BUILTINS = %w(specs os arch ruby)
 
-  # Package?
-  if aspect.include?(':')
-    package_manager, package = aspect.split(':')
-    package_manager = package_manager.to_sym
+  SEP = File::SEPARATOR
 
-    if Recipe::Package.methods.include?(package_manager)
-      Recipe::Package.send(package_manager, package)
-    end
-  # Known aspect?
-  elsif Recipe.methods.include?(method)
-    Recipe.send(method)
-  # Unknown aspect.
-  # Default to --version flag.
-  else
-    "#{aspect} --version"
+  # .../specs/aspects
+  RECIPE_DIR = [SPECS_DIR, 'aspects'].join(SEP)
+
+  Dir[File.join(RECIPE_DIR, '**', '*.rb')].each do |file|
+    require File.expand_path(file)
   end
-end
 
-# Print a command line instruction and its output,
-# Emulating a user manually entering the instruction.
-def self.run(cmd, aspect)
-  # Newline to visually separate multiple aspect commands.
-  puts ''
+  # For a given spec, return the command line instruction(s)
+  # that will get the spec's version information.
+  Contract String => Any
+  def self.command(aspect)
+    # Ruby methods can't use hyphens (-),
+    # So translate to underscores (_)
+    # When looking up known aspects.
+    method = aspect.gsub('-', '_').to_sym
 
-  if !cmd
-    puts "#{aspect} aspect not implemented for this system"
-  elsif cmd == SPECS_VERSION_STRING
-    puts 'specs --version'
-    puts SPECS_VERSION_STRING
-  else
-    puts cmd
+    # Package?
+    if aspect.include?(':')
+      package_manager, package = aspect.split(':')
+      package_manager = package_manager.to_sym
 
-    output = SystemWithAliases::execute(cmd)
-
-    if output.include?(Recipe.command_not_found)
-      puts "#{cmd.split.first} not found"
+      if Recipe::Package.methods.include?(package_manager)
+        Recipe::Package.send(package_manager, package)
+      end
+    # Known aspect?
+    elsif Recipe.methods.include?(method)
+      Recipe.send(method)
+    # Unknown aspect.
+    # Default to --version flag.
     else
-      puts output
+      "#{aspect} --version"
     end
   end
-end
 
-def self.check_ruby_version
-  if Recipe.ruby1_8?
-    puts 'Requires Ruby 1.9 or higher.'
-    puts 'http://www.ruby-lang.org/'
-    exit
+  # Print a command line instruction and its output,
+  # Emulating a user manually entering the instruction.
+  def self.run(cmd, aspect)
+    # Newline to visually separate multiple aspect commands.
+    puts ''
+
+    if !cmd
+      puts "#{aspect} aspect not implemented for this system"
+    elsif cmd == SPECS_VERSION_STRING
+      puts 'specs --version'
+      puts SPECS_VERSION_STRING
+    else
+      puts cmd
+
+      output = SystemWithAliases::execute(cmd)
+
+      if output.include?(Recipe.command_not_found)
+        puts "#{cmd.split.first} not found"
+      else
+        puts output
+      end
+    end
   end
-end
 
-def self.usage
-  puts "Specs:\n\n#{SPECS_VERSION_STRING}\n#{SPECS_HOME_PAGE}"
-
-  exit if ARGV.include?('--version')
-end
-
-def main
-  check_ruby_version
-
-  usage
-
-  # Default aspects
-  aspects = %w(os) # hardware)
-
-  aspects = ARGV unless ARGV.empty?
-
-  aspects -= ['specs', '-v', 'version', '-version', '--version']
-
-  aspects.each do |aspect|
-    # What does the aspect module say to run
-    # in order to retrieve the aspect information?
-    cmds = command(aspect)
-
-    if !cmds || cmds.instance_of?(String)
-      run(cmds, aspect)
-      # Module returns an array of command strings.
-    elsif cmds.instance_of?(Array)
-      cmds.each { |cmd| run(cmd, aspect) }
+  def self.check_ruby_version
+    if Recipe.ruby1_8?
+      puts 'Requires Ruby 1.9 or higher.'
+      puts 'http://www.ruby-lang.org/'
+      exit
     end
   end
 end

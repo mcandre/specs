@@ -3,7 +3,7 @@ require 'rubygems'
 require 'specs'
 
 begin
-  main
+  Specs::main
 rescue Interrupt
   nil
 end

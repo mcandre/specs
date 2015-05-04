@@ -19,6 +19,7 @@ Gem::Specification.new { |s|
   s.required_ruby_version = '>= 1.9'
 
   s.add_dependency 'rb-system-with-aliases', '~> 0.2'
+  s.add_dependency 'docopt', '~> 0.5'
   s.add_dependency 'contracts', '~> 0.7'
 
   s.add_development_dependency 'rake', '~> 10.3'
