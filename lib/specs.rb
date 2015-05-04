@@ -147,7 +147,7 @@ module Recipe
 
   Contract nil => String
   def self.specs
-    SPECS_VERSION_STRING
+    Specs::SPECS_VERSION_STRING
   end
 
   Contract nil => String

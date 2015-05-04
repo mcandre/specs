@@ -1,47 +1,43 @@
-# == Usage
-#
-# specs [aspects]
-#
-# Example:
-#
-# specs ruby os hardware
-#
-# By default, aspects are os and hardware.
-
 require_relative 'specs'
 
-require 'getoptlong'
+require 'docopt'
+
+USAGE = <<DOCOPT
+Usage:
+  specs [-v | -h] [<aspect>]...
+
+Arguments:
+  <aspect>               Software stack to query [default: os hardware]
+
+Options:
+  -v --version           Print version info
+  -h --help              Print usage info
+DOCOPT
 
 module Specs
-  def self.usage
-    puts "Specs:\n\n#{SPECS_VERSION_STRING}\n#{SPECS_HOME_PAGE}"
-
-    exit if ARGV.include?('--version')
-  end
-
   def self.main
     check_ruby_version
 
-    usage
+    begin
+      options = Docopt::docopt(USAGE, version: Specs::VERSION)
 
-    # Default aspects
-    aspects = %w(os) # hardware)
+      # Print specs' own version, and filter out redundant requests
+      aspects = ['specs'] + (options['<aspect>'] - ['specs'])
 
-    aspects = ARGV unless ARGV.empty?
+      aspects.each do |aspect|
+        # What does the aspect module say to run
+        # in order to retrieve the aspect information?
+        cmds = command(aspect)
 
-    aspects -= ['specs', '-v', 'version', '-version', '--version']
-
-    aspects.each do |aspect|
-      # What does the aspect module say to run
-      # in order to retrieve the aspect information?
-      cmds = command(aspect)
-
-      if !cmds || cmds.instance_of?(String)
-        run(cmds, aspect)
-      # Module returns an array of command strings.
-      elsif cmds.instance_of?(Array)
-        cmds.each { |cmd| run(cmd, aspect) }
+        if !cmds || cmds.instance_of?(String)
+          run(cmds, aspect)
+        # Module returns an array of command strings.
+        elsif cmds.instance_of?(Array)
+          cmds.each { |cmd| run(cmd, aspect) }
+        end
       end
+    rescue Docopt::Exit => e
+      puts e.message
     end
   end
 end

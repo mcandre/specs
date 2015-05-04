@@ -14,7 +14,7 @@ Feature: Get versions
     Then the output has "rake --version"
 
     Given "specs --version"
-    Then the output has "https://github.com/mcandre/specs"
+    Then the output is like "[0-9]+"
 
     Given "specs gem:specs"
     Then the output has "specs"

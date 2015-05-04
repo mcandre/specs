@@ -43,7 +43,7 @@ You can copy & paste the output into bug trackers, forums, mailing lists, and li
 specs supports aliases:
 
 ```
-)$ specs rspec ruby chruby
+$ specs rspec ruby chruby
 Specs:
 
 specs 0.17
@@ -81,6 +81,21 @@ v0.10.36
 
 nvm --version
 0.23.3
+```
+
+# USAGE
+
+```
+$ specs -h
+Usage:
+  specs [-v | -h] [<aspect>]...
+
+Arguments:
+  <aspect>               Software stack to query [default: os hardware]
+
+Options:
+  -v --version           Print version info
+  -h --help              Print usage info
 ```
 
 # HOMEPAGE
