@@ -146,11 +146,6 @@ module Recipe
   end
 
   Contract nil => String
-  def self.specs
-    Specs::SPECS_VERSION_STRING
-  end
-
-  Contract nil => String
   def self.ruby_v
     RUBY_VERSION
   end
@@ -188,10 +183,6 @@ end
 
 module Specs
   include Contracts::Modules
-
-  SPECS_VERSION_STRING = "specs #{Specs::VERSION}"
-
-  SPECS_HOME_PAGE = 'https://github.com/mcandre/specs#readme'
 
   SPECS_DIR = Pathname.new(File.dirname(__FILE__))
 
@@ -236,14 +227,11 @@ module Specs
   # Print a command line instruction and its output,
   # Emulating a user manually entering the instruction.
   def self.run(cmd, aspect)
-    # Newline to visually separate multiple aspect commands.
-    puts ''
-
     if !cmd
       puts "#{aspect} aspect not implemented for this system"
-    elsif cmd == SPECS_VERSION_STRING
+    elsif cmd == 'specs'
       puts 'specs --version'
-      puts SPECS_VERSION_STRING
+      puts Specs::Version
     else
       puts cmd
 
@@ -254,6 +242,9 @@ module Specs
       else
         puts output
       end
+
+      # Vertically separate multiple aspects
+      puts ''
     end
   end
 

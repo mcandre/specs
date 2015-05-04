@@ -18,3 +18,6 @@ Feature: Get versions
 
     Given "specs gem:specs"
     Then the output has "specs"
+
+    Given "specs"
+    Then the output is like "(.+\n){4,}"

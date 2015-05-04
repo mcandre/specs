@@ -7,11 +7,11 @@ Usage:
   specs [-v | -h] [<aspect>]...
 
 Arguments:
-  <aspect>               Software stack to query [default: os hardware]
+  <aspect>  Software stack to query [default: os hardware].
 
 Options:
-  -v --version           Print version info
-  -h --help              Print usage info
+  -v --version  Print version info.
+  -h --help     Print usage info.
 DOCOPT
 
 module Specs
@@ -21,8 +21,15 @@ module Specs
     begin
       options = Docopt::docopt(USAGE, version: Specs::VERSION)
 
+      aspects = options['<aspect>']
+
+      # Work around https://github.com/docopt/docopt/issues/274
+      if aspects == []
+        aspects = ['os', 'hardware']
+      end
+
       # Print specs' own version, and filter out redundant requests
-      aspects = ['specs'] + (options['<aspect>'] - ['specs'])
+      aspects = ['specs'] + (aspects - ['specs'])
 
       aspects.each do |aspect|
         # What does the aspect module say to run
