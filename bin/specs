@@ -1,9 +1,3 @@
 #!/usr/bin/env ruby
-require 'rubygems'
 require 'specs'
-
-begin
-  Specs::main
-rescue Interrupt
-  nil
-end
+Specs::main

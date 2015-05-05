@@ -46,5 +46,7 @@ module Specs
     rescue Docopt::Exit => e
       puts e.message
     end
+  rescue Interrupt
+    nil
   end
 end
