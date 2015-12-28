@@ -13,7 +13,7 @@ Specs prints this:
 ```
 $ specs chrome ruby os hardware
 specs --version
-0.19
+0.21
 
 /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --version 2>&1 | grep -v Unsure
  36.0.1985.143
@@ -43,7 +43,7 @@ specs supports aliases:
 ```
 $ specs rspec ruby chruby
 specs --version
-0.19
+0.21
 
 rspec --version
 3.1.7
@@ -62,7 +62,7 @@ chruby: 0.3.9
 
 $ specs coffee node nvm
 specs --version
-0.19
+0.21
 
 coffee --version
 CoffeeScript version 1.9.2
