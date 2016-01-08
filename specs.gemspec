@@ -16,7 +16,7 @@ Gem::Specification.new { |s|
   s.files = Dir['lib/*.rb'] + Dir['lib/aspects/*.rb'] + ['LICENSE.md']
   s.homepage = 'https://github.com/mcandre/specs'
 
-  s.required_ruby_version = '>= 1.9'
+  s.required_ruby_version = '>= 2.0'
 
   s.add_dependency 'rb-system-with-aliases', '~> 0.2'
   s.add_dependency 'docopt', '~> 0.5'
