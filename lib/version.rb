@@ -2,5 +2,5 @@
 # Specs
 #
 module Specs
-  VERSION = '0.21'
+    VERSION = '0.21'
 end

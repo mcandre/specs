@@ -1,37 +1,37 @@
 module Recipe
-  def self.maven
-    mvn
-  end
-
-  def self.mvn
-    'mvn --version'
-  end
-
-  def self.classpath
-    if Os.windows? && !Os.mingw?
-      'echo %CLASSPATH'
-    else
-      'echo $CLASSPATH'
+    def self.maven
+        mvn
     end
-  end
 
-  def self.javahome
-    if Os.windows? && !Os.mingw?
-      'echo %JAVA_HOME%'
-    else
-      'echo $JAVA_HOME'
+    def self.mvn
+        'mvn --version'
     end
-  end
 
-  def self.oak
-    'java -version'
-  end
+    def self.classpath
+        if Os.windows? && !Os.mingw?
+            'echo %CLASSPATH'
+        else
+            'echo $CLASSPATH'
+        end
+    end
 
-  def self.oakc
-    'javac -version'
-  end
+    def self.javahome
+        if Os.windows? && !Os.mingw?
+            'echo %JAVA_HOME%'
+        else
+            'echo $JAVA_HOME'
+        end
+    end
 
-  def self.java
-    [mvn, classpath, javahome, oakc, oak]
-  end
+    def self.oak
+        'java -version'
+    end
+
+    def self.oakc
+        'javac -version'
+    end
+
+    def self.java
+        [mvn, classpath, javahome, oakc, oak]
+    end
 end

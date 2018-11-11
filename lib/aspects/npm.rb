@@ -1,11 +1,11 @@
 module Recipe
-  module Package
-    def self.npm(package)
-      "npm list #{package}"
+    module Package
+        def self.npm(package)
+            "npm list #{package}"
+        end
     end
-  end
 
-  def self.npm
-    'npm --version'
-  end
+    def self.npm
+        'npm --version'
+    end
 end

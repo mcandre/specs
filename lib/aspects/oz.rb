@@ -1,5 +1,5 @@
 module Recipe
-  def self.oz
-    'ozc -v'
-  end
+    def self.oz
+        'ozc -v'
+    end
 end

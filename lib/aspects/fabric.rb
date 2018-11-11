@@ -1,5 +1,5 @@
 module Recipe
-  def self.fabric
-    'fab --version'
-  end
+    def self.fabric
+        'fab --version'
+    end
 end

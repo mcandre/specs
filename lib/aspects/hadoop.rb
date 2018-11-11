@@ -1,25 +1,25 @@
 module Recipe
-  def self.hadoophome
-    if Os.windows? && !Os.mingw?
-      'echo %HADOOP_PREFIX%'
-    else
-      'echo $HADOOP_PREFIX'
+    def self.hadoophome
+        if Os.windows? && !Os.mingw?
+            'echo %HADOOP_PREFIX%'
+        else
+            'echo $HADOOP_PREFIX'
+        end
     end
-  end
 
-  def self.hadoopversion
-    if Os.windows? && !Os.mingw?
-      'echo %HADOOP_VERSION%'
-    else
-      'echo $HADOOP_VERSION'
+    def self.hadoopversion
+        if Os.windows? && !Os.mingw?
+            'echo %HADOOP_VERSION%'
+        else
+            'echo $HADOOP_VERSION'
+        end
     end
-  end
 
-  def self.hadoopcommand
-    'hadoop version'
-  end
+    def self.hadoopcommand
+        'hadoop version'
+    end
 
-  def self.hadoop
-    [hadoophome, hadoopversion, hadoopcommand]
-  end
+    def self.hadoop
+        [hadoophome, hadoopversion, hadoopcommand]
+    end
 end

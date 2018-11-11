@@ -1,5 +1,5 @@
 module Recipe
-  def self.go
-    'go version'
-  end
+    def self.go
+        'go version'
+    end
 end

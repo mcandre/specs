@@ -4,13 +4,13 @@
 
 You type this:
 
-```
+```console
 $ specs chrome ruby os hardware
 ```
 
 Specs prints this:
 
-```
+```console
 $ specs chrome ruby os hardware
 specs --version
 0.21
@@ -40,7 +40,7 @@ You can copy & paste the output into bug trackers, forums, mailing lists, and li
 
 specs supports aliases:
 
-```
+```console
 $ specs rspec ruby chruby
 specs --version
 0.21
@@ -79,7 +79,7 @@ nvm --version
 
 # USAGE
 
-```
+```console
 $ specs -h
 Usage:
   specs [-v | -h] [<aspect>]...
@@ -127,9 +127,17 @@ multi_json (1.10.1, 1.8.4)
 
 * [Ruby](http://www.ruby-lang.org/) 2.0+
 
+## Optional
+
+* [make](https://www.gnu.org/software/make/)
+* [GNU findutils](https://www.gnu.org/software/findutils/)
+* [stank](https://github.com/mcandre/stank) (e.g. `go get github.com/mcandre/stank/...`)
+* [Python](https://www.python.org) 3+ (for yamllint)
+* [Node.js](https://nodejs.org/en/) (for eclint)
+
 # INSTALL
 
-```
+```console
 $ gem install specs
 ```
 
@@ -143,7 +151,7 @@ When you're happy with your recipes, issue a [pull request](https://github.com/m
 
 Checkout a copy of the code, and get the developer dependencies:
 
-```
+```console
 $ git clone https://github.com/mcandre/specs.git
 $ cd specs
 $ bundle
@@ -153,7 +161,7 @@ $ bundle
 
 Ensure the example script works as expected:
 
-```
+```console
 $ bundle
 $ cucumber
 ```
@@ -162,13 +170,13 @@ $ cucumber
 
 Keep the code looking good with the linter tools:
 
-```
+```console
 $ rake lint
 ```
 
 ## Spell Check
 
-```
+```console
 $ aspelllint
 ```
 

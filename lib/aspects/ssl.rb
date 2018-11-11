@@ -1,5 +1,5 @@
 module Recipe
-  def self.ssl
-    'openssl version'
-  end
+    def self.ssl
+        'openssl version'
+    end
 end

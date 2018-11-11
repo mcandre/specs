@@ -1,23 +1,22 @@
 Feature: Get versions
+    Scenario: Running specs
+        Given "specs ruby"
+        Then the output has "ruby --version"
 
-  Scenario: Running specs
-    Given "specs ruby"
-    Then the output has "ruby --version"
+        Given "specs ruby"
+        Then the output has "gem --version"
 
-    Given "specs ruby"
-    Then the output has "gem --version"
+        Given "specs ruby"
+        Then the output has "bundle --version"
 
-    Given "specs ruby"
-    Then the output has "bundle --version"
+        Given "specs rake"
+        Then the output has "rake --version"
 
-    Given "specs rake"
-    Then the output has "rake --version"
+        Given "specs --version"
+        Then the output is like "[0-9]+"
 
-    Given "specs --version"
-    Then the output is like "[0-9]+"
+        Given "specs gem:specs"
+        Then the output has "specs"
 
-    Given "specs gem:specs"
-    Then the output has "specs"
-
-    Given "specs"
-    Then the output is like "(.+\n){4,}"
+        Given "specs"
+        Then the output is like "(.+\n){4,}"

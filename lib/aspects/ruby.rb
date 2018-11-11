@@ -1,27 +1,27 @@
 module Recipe
-  module Package
-    def self.bundle(package)
-      "bundle list #{package}"
+    module Package
+        def self.bundle(package)
+            "bundle list #{package}"
+        end
+
+        def self.gem(package)
+            "gem list | grep #{package}"
+        end
     end
 
-    def self.gem(package)
-      "gem list | grep #{package}"
+    def self.bundler
+        'bundle --version'
     end
-  end
 
-  def self.bundler
-    'bundle --version'
-  end
+    def self.rubygems
+        'gem --version'
+    end
 
-  def self.rubygems
-    'gem --version'
-  end
+    def self.rb
+        'ruby --version'
+    end
 
-  def self.rb
-    'ruby --version'
-  end
-
-  def self.ruby
-    [bundler, rubygems, rb]
-  end
+    def self.ruby
+        [bundler, rubygems, rb]
+    end
 end
