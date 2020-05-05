@@ -125,7 +125,7 @@ multi_json (1.10.1, 1.8.4)
 
 # REQUIREMENTS
 
-* [Ruby](http://www.ruby-lang.org/) 2.0+
+* [Ruby](http://www.ruby-lang.org/) 2.7.1+
 
 ## Optional
 
