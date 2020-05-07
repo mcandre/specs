@@ -178,7 +178,3 @@ $ rake lint
 ```console
 $ aspelllint
 ```
-
-## Git Hooks
-
-See `hooks/`.
